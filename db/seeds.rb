@@ -8,4 +8,7 @@
 
 nico = User.create(username: 'La Beaude', email: 'nico@beaud.com', password: 'password')
 chatte = User.create(username: 'Chaton', email: 'benoit@calin.com', password: 'password')
-lagrande = User.create(username: '')
+lagrande = User.create(username: 'Lagrande', email: 'kegin@lagranderie.com', password: 'password')
+ens = User.create(username: 'Ensbiker', email: 'kevin@enselme.com', password: 'password')
+
+

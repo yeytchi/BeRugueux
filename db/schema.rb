@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_03_174706) do
+ActiveRecord::Schema.define(version: 2019_05_04_133422) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,8 +26,6 @@ ActiveRecord::Schema.define(version: 2019_05_03_174706) do
   end
 
   create_table "games", force: :cascade do |t|
-    t.integer "home_team"
-    t.integer "away_team"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "team_id"
@@ -41,9 +39,10 @@ ActiveRecord::Schema.define(version: 2019_05_03_174706) do
     t.integer "kicking_accuracy"
     t.boolean "kicker"
     t.string "position"
-    t.boolean "injured"
+    t.boolean "injured", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "status", default: 0
   end
 
   create_table "seasons", force: :cascade do |t|
@@ -53,6 +52,7 @@ ActiveRecord::Schema.define(version: 2019_05_03_174706) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
+    t.integer "status", default: 0
     t.index ["user_id"], name: "index_seasons_on_user_id"
   end
 
@@ -60,11 +60,11 @@ ActiveRecord::Schema.define(version: 2019_05_03_174706) do
     t.integer "real_game_id"
     t.integer "rating"
     t.integer "minutes_played"
-    t.integer "tries"
-    t.integer "transformations"
-    t.integer "kick_attempts"
-    t.integer "successful_kicks"
-    t.integer "conceded_penalties"
+    t.integer "tries", default: 0
+    t.integer "transformations", default: 0
+    t.integer "kick_attempts", default: 0
+    t.integer "successful_kicks", default: 0
+    t.integer "conceded_penalties", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "game_id"
@@ -82,6 +82,7 @@ ActiveRecord::Schema.define(version: 2019_05_03_174706) do
     t.datetime "updated_at", null: false
     t.bigint "user_id"
     t.bigint "season_id"
+    t.integer "status", default: 0
     t.index ["season_id"], name: "index_teams_on_season_id"
     t.index ["user_id"], name: "index_teams_on_user_id"
   end
@@ -94,6 +95,7 @@ ActiveRecord::Schema.define(version: 2019_05_03_174706) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "admin", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

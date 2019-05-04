@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
+  get 'seasons/index'
+  get 'seasons/new'
+  get 'seasons/create'
+  get 'seasons/show'
   devise_for :users
-  root to: 'seasons#inex'
+  root to: 'seasons#index'
 
   resources :seasons, only:[:index, :new, :create, :show] do
     resources :teams, only:[:new, :create, :show] do

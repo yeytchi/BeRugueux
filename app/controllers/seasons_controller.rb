@@ -8,9 +8,17 @@ class SeasonsController < ApplicationController
   end
 
   def new
+    @season = Season.new
   end
 
   def create
+    @season = current_user.seasons.new(event_params)
+
+    if @season.save
+      redirect_to @season
+    else
+      render :new
+    end
   end
 
   def show

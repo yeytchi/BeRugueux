@@ -1,4 +1,6 @@
 class SeasonsController < ApplicationController
+  before_action :set_season, only: [:show]
+
   def index
     if current_user.admin?
       @seasons = Season.all
@@ -22,5 +24,12 @@ class SeasonsController < ApplicationController
   end
 
   def show
+    participants =
+  end
+
+  private
+
+  def set_season
+    @season = Season.find(params[:id])
   end
 end

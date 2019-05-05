@@ -6,3 +6,55 @@
   bottom: 30px;
   right: 30px;
 }
+
+.seasons-index-wrapper {
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+}
+
+.current-seasons {
+  position: absolute;
+  top: 100px;
+  bottom: 100px;
+  left: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  overflow: hidden;
+  overflow-y: scroll;
+  a {
+    text-decoration: none;
+    color: black;
+    width: 400px;
+    max-width: 95%;
+    height: 100px;
+    margin: 5px 0;
+  }
+  // Juste pour développement
+  border: 1px solid pink;
+}
+
+.current-season-slate {
+  width: 100%;
+  display: flex;
+  &:hover {
+    cursor: pointer;
+    transform: scale(1.02);
+    background-color: lightgrey;
+    transition: all .2s ease-in-out;
+  }
+  // Juste pour développement
+  border: 1px solid grey;
+}
+
+.current-season-icon {
+  height: 100px;
+  width: 100px;
+  min-width: 100px;
+  margin-right: 5px;
+  // Juste pour développement
+  border: 1px solid lightgreen;
+}

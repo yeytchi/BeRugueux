@@ -1,14 +1,20 @@
-<h1>Seasons#index</h1>
-<p>Find me in app/views/seasons/index.html.erb</p>
+<div class="seasons-index-wrapper">
+  <div class="page-title">
+    <h1>Saisons en cours</h1>
+  </div>
 
-<ul>
-  <% @seasons.each do |season| %>
-    <li><%= season.name %></li>
-  <% end %>
-</ul>
+  <div class="current-seasons">
+      <% @seasons.each do |season| %>
+        <%= link_to season_path(season.id), class: 'current-season-slate' do %>
+          <div class="current-season-icon"></div>
+          <h3><%= season.name %></h3>
+        <% end %>
+      <% end %>
+  </div>
+  <div class="new-season-btn">
+    <%= link_to new_season_path do %>
+       <button type="button" class="btn btn-primary">Nouvelle Saison</button>
+    <% end %>
+  </div>
 
-<div class="new-season-btn">
-  <%= link_to new_season_path do %>
-     <button type="button" class="btn btn-primary">Nouvelle Saison</button>
-  <% end %>
 </div>

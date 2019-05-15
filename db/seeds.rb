@@ -18,4 +18,9 @@ ens = User.create!(username: 'Ensbiker', email: 'kevin@enselme.com', password: '
 complete_season = Season.create!(user: nico, name: 'Tournoi Boudins Caillettes', number_of_teams: 4)
 incomplete_season = Season.create!(user: nico, name: 'Poule Oppo', number_of_teams: 4)
 
+olymplique_saucisse = Team.create!(season: complete_season, user: nico, name: 'Olympique Saucisse', main_colour: 'blue', secondary_colour: 'orange')
+rc_belote = Team.create!(season: complete_season, user: chatte, name: 'RC Belote', main_colour: 'black', secondary_colour: 'white')
+ca_tango = Team.create!(season: complete_season, user: lagrande, name: 'CA Tango', main_colour: 'green', secondary_colour: 'white')
+union_nazes = Team.create!(season: complete_season, user: ens, name: 'Union Nazes', main_colour: 'red', secondary_colour: 'black')
+
 puts 'Seed completed'

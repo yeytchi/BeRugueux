@@ -24,7 +24,7 @@ class SeasonsController < ApplicationController
   end
 
   def show
-    participants =
+    @teams = Team.where(season_id: @season.id)
   end
 
   private

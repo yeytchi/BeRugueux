@@ -1,5 +1,11 @@
-<div class="page-title">
-  <h1><%= @season.name %></h1>
-</div>
+<div class="pages-wrapper">
+  <div class="page-title">
+    <h1><%= @season.name %></h1>
+  </div>
 
-<% @season %>
+  <div class="slates-wrapper">
+    <% @teams.each do |team| %>
+      <%= team.name %>
+      <%= team.id %>
+    <% end %>
+</div>

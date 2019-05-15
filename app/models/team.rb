@@ -10,7 +10,9 @@ class Team < ApplicationRecord
   validates :name, presence: true, uniqueness: { scope: :season }
   validates :main_colour, presence: true
   validates :secondary_colour, presence: true
-  validates [:main_colour, :secondary_colour], uniqueness: { scope: :season }
+
+  # I want to validate the uniqueness of the couple main/secondary, within a single season.
+  # validates [:main_colour, :secondary_colour], uniqueness: { scope: :season }
 
   enum status: { recruiting: 0, complete: 1 }
 end

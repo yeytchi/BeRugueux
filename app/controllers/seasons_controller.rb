@@ -25,6 +25,7 @@ class SeasonsController < ApplicationController
 
   def show
     @teams = Team.where(season_id: @season.id)
+    @season.display_calendar
   end
 
   private

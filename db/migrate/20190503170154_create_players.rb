@@ -7,7 +7,8 @@ class CreatePlayers < ActiveRecord::Migration[5.2]
       t.integer :kicking_accuracy
       t.boolean :kicker
       t.string :position
-      t.boolean :injured
+      t.boolean :injured, default: false
+      t.integer :status, default: 0
 
       t.timestamps
     end

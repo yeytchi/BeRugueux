@@ -1,25 +1,52 @@
-class Season < ApplicationRecord
-  belongs_to :user
-  has_many :teams, dependent: :destroy
-  has_many :days, dependent: :destroy
-  has_many :games, through: :days, dependent: :destroy
+class SeasonsController < ApplicationController
+  before_action :set_season, only: [:show]
+  before_action :set_status, only: [:show]
 
-  validates :name, presence: true
-  validates :number_of_teams, presence: true, inclusion: { in: [2, 4, 6] }
+  def index
+    if current_user.admin?
+      @seasons = Season.all
+    else
+      @seasons = Season.where(user_id: current_user)
+    end
+  end
 
-  enum status: { joining: 0, complete: 1 }
+  def new
+    @season = Season.new
+  end
 
-  # after_create :set_calendar
+  def create
+    @season = current_user.seasons.new(event_params)
 
-  # def display_calendar
-  #   return @calendar
-  # end
+    if @season.save
+      redirect_to @season
+    else
+      render :new
+    end
+  end
 
-  # private
+  def show
+    @teams = Team.where(season_id: @season.id)
+    # set_calendar
+  end
+
+  private
+
+  def set_season
+    @season = Season.find(params[:id])
+  end
+
+  def set_status
+    if @season.teams.count == @season.number_of_teams
+      @season.status = :complete
+    else
+      @season.status = :joining
+    end
+  end
 
   # def set_calendar
-  #   order = (1..number_of_teams).to_a.shuffle
-  #   case number_of_teams
+  #   teams = Team.where(season_id: @season.id)
+  #   order = (1..@season.number_of_teams).to_a.shuffle
+  #   case @season.number_of_teams
   #   when 2
   #     @calendar = {
   #       day_one: {
@@ -72,4 +99,5 @@ class Season < ApplicationRecord
   #   end
   #   @calendar
   # end
+
 end

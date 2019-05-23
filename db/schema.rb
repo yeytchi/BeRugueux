@@ -10,10 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_04_133422) do
+ActiveRecord::Schema.define(version: 2019_05_23_074033) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "days", force: :cascade do |t|
+    t.bigint "season_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["season_id"], name: "index_days_on_season_id"
+  end
 
   create_table "drafts", force: :cascade do |t|
     t.integer "amount"
@@ -29,6 +36,8 @@ ActiveRecord::Schema.define(version: 2019_05_04_133422) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "team_id"
+    t.bigint "day_id"
+    t.index ["day_id"], name: "index_games_on_day_id"
     t.index ["team_id"], name: "index_games_on_team_id"
   end
 
@@ -96,12 +105,15 @@ ActiveRecord::Schema.define(version: 2019_05_04_133422) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "admin", default: false
+    t.string "username"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "days", "seasons"
   add_foreign_key "drafts", "players"
   add_foreign_key "drafts", "teams"
+  add_foreign_key "games", "days"
   add_foreign_key "games", "teams"
   add_foreign_key "seasons", "users"
   add_foreign_key "statistics", "games"

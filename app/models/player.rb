@@ -1,5 +1,5 @@
 class Player < ApplicationRecord
-  has_many :drafts
+  has_many :drafts, dependent: :destroy
   has_many :statistics
 
   validates :first_name, presence: true

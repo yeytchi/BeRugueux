@@ -1,0 +1,16 @@
+<h1>Seasons#new</h1>
+<p>Find me in app/views/seasons/new.html.erb</p>
+
+<div class="new-season-form">
+  <%= simple_form_for @season, method: :post do |f| %>
+    <div class="">
+      <h2>Nom de la Saison</h2>
+      <%= f.input_field :name, placeholder: 'Championnat Gigot Haricots', label: 'Nom de la Saison', error: 'Vous devez nommer votre saison' %>
+    </div>
+    <div class="">
+      <h2>Nombre de participants</h2>
+      <%= f.input_field :number_of_teams, collection: [2, 4, 6], label: "Nombre d'équipes participantes" %>
+    </div>
+    <%= f.button :submit, class: 'btn btn-primary btn-block' %>
+  <% end %>
+</div>

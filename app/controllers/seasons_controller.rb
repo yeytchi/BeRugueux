@@ -1,5 +1,6 @@
 class SeasonsController < ApplicationController
   before_action :set_season, only: [:show]
+  before_action :set_status, only: [:show]
 
   def index
     if current_user.admin?
@@ -25,7 +26,7 @@ class SeasonsController < ApplicationController
 
   def show
     @teams = Team.where(season_id: @season.id)
-    @season.display_calendar
+    # set_calendar
   end
 
   private
@@ -33,4 +34,70 @@ class SeasonsController < ApplicationController
   def set_season
     @season = Season.find(params[:id])
   end
+
+  def set_status
+    if @season.teams.count == @season.number_of_teams
+      @season.status = :complete
+    else
+      @season.status = :joining
+    end
+  end
+
+  # def set_calendar
+  #   teams = Team.where(season_id: @season.id)
+  #   order = (1..@season.number_of_teams).to_a.shuffle
+  #   case @season.number_of_teams
+  #   when 2
+  #     @calendar = {
+  #       day_one: {
+  #         game_one: { home_team: teams.find(order[0]), away_team: teams.find(order[1]) }
+  #       }
+  #     }
+  #   when 4
+  #     @calendar = {
+  #       day_one: {
+  #         game_one: { home_team: teams.find(order[0]), away_team: teams.find(order[1]) },
+  #         game_two: { home_team: teams.find(order[2]), away_team: teams.find(order[3]) }
+  #       },
+  #       day_two: {
+  #         game_one: { home_team: teams.find(order[2]), away_team: teams.find(order[0]) },
+  #         game_two: { home_team: teams.find(order[3]), away_team: teams.find(order[1]) }
+  #       },
+  #       day_three: {
+  #         game_one: { home_team: teams.find(order[0]), away_team: teams.find(order[3]) },
+  #         game_two: { home_team: teams.find(order[2]), away_team: teams.find(order[1]) }
+  #       }
+  #     }
+  #   when 6
+  #     @calendar = {
+  #       day_one: {
+  #         game_one: { home_team: teams.find(order[0]), away_team: teams.find(order[1]) },
+  #         game_two: { home_team: teams.find(order[2]), away_team: teams.find(order[3]) },
+  #         game_three: { home_team: teams.find(order[4]), away_team: teams.find(order[5]) }
+  #       },
+  #       day_two: {
+  #         game_one: { home_team: teams.find(order[2]), away_team: teams.find(order[0]) },
+  #         game_two: { home_team: teams.find(order[3]), away_team: teams.find(order[4]) },
+  #         game_three: { home_team: teams.find(order[5]), away_team: teams.find(order[1]) }
+  #       },
+  #       day_three: {
+  #         game_one: { home_team: teams.find(order[0]), away_team: teams.find(order[3]) },
+  #         game_two: { home_team: teams.find(order[4]), away_team: teams.find(order[1]) },
+  #         game_three: { home_team: teams.find(order[5]), away_team: teams.find(order[2]) }
+  #       },
+  #       day_four: {
+  #         game_one: { home_team: teams.find(order[0]), away_team: teams.find(order[4]) },
+  #         game_two: { home_team: teams.find(order[1]), away_team: teams.find(order[2]) },
+  #         game_three: { home_team: teams.find(order[3]), away_team: teams.find(order[5]) }
+  #       },
+  #       day_five: {
+  #         game_one: { home_team: teams.find(order[5]), away_team: teams.find(order[0]) },
+  #         game_two: { home_team: teams.find(order[1]), away_team: teams.find(order[3]) },
+  #         game_three: { home_team: teams.find(order[2]), away_team: teams.find(order[4]) }
+  #       }
+  #     }
+  #   end
+  #   @calendar
+  # end
+
 end

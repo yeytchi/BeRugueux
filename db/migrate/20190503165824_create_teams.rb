@@ -1,12 +1,13 @@
 class CreateTeams < ActiveRecord::Migration[5.2]
   def change
     create_table :teams do |t|
-      t.integer :season
-      t.integer :user
+      t.references :season, foreign_key: true
+      t.references :user, foreign_key: true
       t.string :name
       t.string :logo
       t.string :main_colour
       t.string :secondary_colour
+      t.integer :status, default: 0
 
       t.timestamps
     end

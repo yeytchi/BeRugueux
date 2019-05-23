@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
-  get 'seasons/index'
-  get 'seasons/new'
-  get 'seasons/create'
-  get 'seasons/show'
+
   devise_for :users
   root to: 'seasons#index'
 

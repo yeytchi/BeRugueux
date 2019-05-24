@@ -26,6 +26,7 @@ class SeasonsController < ApplicationController
 
   def show
     @teams = Team.where(season_id: @season.id)
+    @days = Day.where(season_id: @season.id)
     # set_calendar
   end
 

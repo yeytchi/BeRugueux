@@ -8,37 +8,13 @@
       <%= team.name %><br>
     <% end %>
 
-  <%# Testing the calendar system %>
-  <div class="games-displayer">
-    <h3>Day One</h3>
-    <h4>Game One</h4>
-    <%= @calendar[:day_one][:game_one][:home_team].name %> VS <%= @calendar[:day_one][:game_one][:away_team].name %>
 
-    <h4>Game Two</h4>
-    <%= @calendar[:day_one][:game_two][:home_team].name %> VS <%= @calendar[:day_one][:game_two][:away_team].name %>
+    <% @days.each do |day| %>
+      <h3>Day <%= day.id %></h3>
+      <% day.games.each do |game| %>
+        <p><%= game.home_team.name %> - <%= game.away_team.name %></p>
+      <% end %>
+    <% end %>
 
-    <h3>Day Two</h3>
-    <h4>Game Two</h4>
-    <%= @calendar[:day_two][:game_one][:home_team].name %> VS <%= @calendar[:day_two][:game_one][:away_team].name %>
-
-    <%# Game Two %>
-    <h4>Game One</h4>
-    <%= @calendar[:day_two][:game_two][:home_team].name %> VS <%= @calendar[:day_two][:game_two][:away_team].name %>
-
-    <h3>Day Three</h3>
-    <h4>Game One</h4>
-    <%= @calendar[:day_three][:game_one][:home_team].name %> VS <%= @calendar[:day_three][:game_one][:away_team].name %>
-
-    <h4>Game Two</h4>
-    <%= @calendar[:day_three][:game_two][:home_team].name %> VS <%= @calendar[:day_three][:game_two][:away_team].name %>
   </div>
-
-
-
-
-
-
-
-
-
 </div>

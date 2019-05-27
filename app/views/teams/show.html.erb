@@ -1,0 +1,25 @@
+<div class="return_button">
+  <%= link_to season_path(@season) do %>
+     <button type="button" class="btn btn-primary">Retour</button>
+  <% end %>
+</div>
+
+<div class="pages-wrapper">
+  <div class="page-title">
+    <h1>Prépare la compo du <%= @team.name %></h1>
+  </div>
+
+  <div class="slates-wrapper">
+
+
+  </div>
+
+</div>
+
+<div class="new-season-btn">
+  <%= link_to season_team_players_path(@season, @team) do %>
+    <button type="button" class="btn btn-primary">Liste des Joueurs</button>
+  <% end %>
+</div>
+
+

@@ -1,0 +1,83 @@
+.return_button {
+  position: absolute;
+  top: 65px;
+  left: 30px;
+}
+
+.season-calendar {
+  width: 300px;
+  height: 150px;
+  border: 1px solid green;
+  display: flex;
+  align-items: flex-end;
+}
+
+.scroll-snap {
+  scroll-snap-type: x mandatory;
+  display: flex;
+  overflow-x: scroll;
+}
+.day-calendar {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  min-width: 300px;
+  height: 150px;
+  scroll-snap-align: center;
+
+  padding: 10px;
+}
+
+.row {
+  width: 100%;
+  height: 50px;
+}
+
+.col {
+  padding: 0;
+  width: 135px;
+  display: flex;
+  align-items: center;
+  p {
+    margin: 0;
+  }
+}
+
+.col-left {
+  justify-content: flex-end;
+  padding-right: 5px;
+}
+
+.col-right {
+  justify-content: flex-start;
+  padding-left: 5px;
+}
+
+.col-hyphen {
+  width: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ranking {
+  margin-top: 50px;
+  width: 400px;
+  max-width: 100%;
+  height: 250px;
+  border: 1px solid grey;
+  display: flex;
+  flex-direction: column;
+}
+
+.rank {
+  width: 100%;
+}
+
+
+
+
+
+
+

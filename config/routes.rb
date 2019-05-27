@@ -1,15 +1,19 @@
 Rails.application.routes.draw do
 
+  get 'drafts/create'
+  get 'players/index'
   devise_for :users
   root to: 'seasons#index'
 
-  resources :seasons, only:[:index, :new, :create, :show] do
-    resources :teams, only:[:new, :create, :show] do
+  resources :seasons, only:[:index, :new, :create, :show, :destroy] do
+    resources :teams, only:[:new, :create, :show, :edit, :update] do
+      resources :players, only: [:index] do
+      end
       resources :drafts, only:[:new, :create, :index] do
       end
     end
   end
-                                   #only admin except :show
+  #only admin except :show
   resources :players, only:[:show, :new, :create, :update, :edit, :destroy] do
   end
 

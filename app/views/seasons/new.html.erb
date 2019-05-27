@@ -1,16 +1,26 @@
-<h1>Seasons#new</h1>
-<p>Find me in app/views/seasons/new.html.erb</p>
-
-<div class="new-season-form">
-  <%= simple_form_for @season, method: :post do |f| %>
-    <div class="">
-      <h2>Nom de la Saison</h2>
-      <%= f.input_field :name, placeholder: 'Championnat Gigot Haricots', label: 'Nom de la Saison', error: 'Vous devez nommer votre saison' %>
-    </div>
-    <div class="">
-      <h2>Nombre de participants</h2>
-      <%= f.input_field :number_of_teams, collection: [2, 4, 6], label: "Nombre d'équipes participantes" %>
-    </div>
-    <%= f.button :submit, class: 'btn btn-primary btn-block' %>
+<div class="return_button">
+  <%= link_to seasons_path do %>
+     <button type="button" class="btn btn-primary">Retour</button>
   <% end %>
+</div>
+
+<div class="pages-wrapper">
+  <div class="page-title">
+    <h1>Crée ta saison</h1>
+  </div>
+
+  <div class="new-season-form">
+    <%= simple_form_for @season, method: :post do |f| %>
+      <div class="">
+        <h2>Nom de la Saison</h2>
+        <%= f.input_field :name, placeholder: 'Championnat Gigot Haricots', label: 'Nom de la Saison', error: 'Vous devez nommer votre saison' %>
+      </div>
+      <div class="">
+        <h2>Nombre de participants</h2>
+        <%= f.input_field :number_of_teams, collection: [2, 4, 6], label: "Nombre d'équipes participantes", error: 'Vous devez choisir le nombre de participats' %>
+      </div>
+      <%= f.button :submit, class: 'btn btn-primary btn-block' %>
+    <% end %>
+  </div>
+
 </div>

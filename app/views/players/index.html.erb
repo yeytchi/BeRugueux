@@ -43,8 +43,8 @@
         </div>
       </div>
 
-      <div id="modal<%= player.id %>-offer" class="draft-form d-none">
-        <%= simple_form_for([@season, @team, @draft], method: :post) do |f| %>
+      <div id="modal<%= player.id %>-offer" class="offer-form d-none">
+        <%= simple_form_for([@season, @team, @offer], method: :post) do |f| %>
           <%= f.input :amount, label: 'Montant de ton offre' %>
           <%= f.association :team, default: params[:team_id], as: :hidden %>
           <%= f.association :player, label: false, selected: player.id, input_html: { class: 'd-none' } %>

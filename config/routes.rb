@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'drafts/create'
-  get 'players/index'
   devise_for :users
   root to: 'seasons#index'
 
@@ -9,7 +7,7 @@ Rails.application.routes.draw do
     resources :teams, only:[:new, :create, :show, :edit, :update] do
       resources :players, only: [:index] do
       end
-      resources :drafts, only:[:new, :create, :index] do
+      resources :offers, only:[:new, :create, :index] do
       end
     end
   end

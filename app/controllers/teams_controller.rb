@@ -24,7 +24,7 @@ class TeamsController < ApplicationController
 
     @players = Player.where(user: current_user)
 
-    @drafts = Draft.where(team: @team)
+    @offers = Offer.where(team: @team)
   end
 
   private

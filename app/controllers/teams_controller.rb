@@ -23,6 +23,8 @@ class TeamsController < ApplicationController
     @season = Season.find(params[:season_id])
 
     @players = Player.where(user: current_user)
+
+    @drafts = Draft.where(team: @team)
   end
 
   private

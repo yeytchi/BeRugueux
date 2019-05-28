@@ -7,8 +7,13 @@ const generateOffer = () => {
       const modal = document.getElementById('modal'.concat(id));
       modal.classList.remove('d-none');
 
-      const exit = document.getElementById('exit'.concat(id));
-      exit.addEventListener('click', (e) => {
+      const create = document.getElementById('create'.concat(id));
+      create.addEventListener('click', (e) => {
+        modal.classList.add('d-none');
+      });
+
+      const cancel = document.getElementById('cancel'.concat(id));
+      cancel.addEventListener('click', (e) => {
         modal.classList.add('d-none');
       });
     });

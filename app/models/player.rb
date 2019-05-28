@@ -1,4 +1,5 @@
 class Player < ApplicationRecord
+  # belongs_to :team, optional: true
   has_many :drafts, dependent: :destroy
   has_many :statistics
 

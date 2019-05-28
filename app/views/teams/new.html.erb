@@ -1,0 +1,33 @@
+<div class="return_button">
+  <%= link_to season_path(@season) do %>
+     <button type="button" class="btn btn-primary">Retour</button>
+  <% end %>
+</div>
+
+<div class="pages-wrapper">
+  <div class="page-title">
+    <h1>Crée ton équipe pour participer à <%= @season.name %></h1>
+  </div>
+
+  <div class="new-team-form">
+    <%= simple_form_for [@season, @team], method: :post do |f| %>
+      <div class="">
+        <h2>Nom de ton équipe</h2>
+        <%= f.input_field :name, placeholder: 'RC Saucisse', label: 'Nom de ton équipe', error: 'Tu dois nommer ton équipe' %>
+      </div>
+      <div class="">
+        <h2>Logo de ton équipe</h2>
+        <%= f.input_field :logo, placeholder: '', label: 'Logo de ton équipe' %>
+      </div>
+      <div class="">
+        <h2>Couleur principale de ton équipe</h2>
+        <%= f.input_field :main_colour, placeholder: '', label: 'Couleur principale de ton équipe' %>
+      </div>
+      <div class="">
+        <h2>Couleur secondaire de ton équipe</h2>
+        <%= f.input_field :secondary_colour, placeholder: '', label: 'Couleur secondaire de ton équipe' %>
+      </div>
+      <%= f.button :submit, class: 'btn btn-primary btn-block' %>
+    <% end %>
+  </div>
+</div>

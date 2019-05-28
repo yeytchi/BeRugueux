@@ -1,4 +1,7 @@
 // Import page-specific CSS files here.
 @import "home";
-@import "seasons_index";
-@import "seasons_show";
+@import "seasons/index";
+@import "seasons/show";
+@import "teams/show";
+@import "players/index";
+@import "teams/show"

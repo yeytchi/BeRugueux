@@ -1,0 +1,79 @@
+<div class="return_button">
+  <%= link_to season_path(@season) do %>
+     <button type="button" class="btn btn-primary">Retour</button>
+  <% end %>
+</div>
+
+<div class="pages-wrapper">
+  <div class="page-title">
+    <h1>Prépare la compo du <%= @team.name %></h1>
+  </div>
+
+  <div class="slates-wrapper">
+    <div class="players">
+      <h2>Tes Drafts</h2>
+      <div class="player-slate">
+          <div class="player-info">
+            Nom
+          </div>
+          <div class="player-info">
+            Postes
+          </div>
+          <div class="player-info">
+            Club
+          </div>
+          <div class="player-offer">
+            Montant de ton offre
+          </div>
+        </div>
+
+      <% @drafts.each do |draft| %>
+
+        <div class="player-slate">
+          <div class="player-info">
+            <%= draft.player.first_name %> <%= draft.player.last_name %>
+          </div>
+          <div class="player-info">
+            <%= draft.player.position %>
+          </div>
+          <div class="player-info">
+            <%= draft.player.club %>
+          </div>
+          <div class="player-offer">
+            <%= draft.amount %>
+          </div>
+        </div>
+      <% end %>
+
+    </div>
+    <div class="players">
+      <h2>Tes Joueurs</h2>
+      <% @players.each do |player| %>
+
+        <div class="player-slate">
+          <div class="player-info">
+            <%= player.first_name %> <%= player.last_name %>
+          </div>
+          <div class="player-info">
+            <%= player.position %>
+          </div>
+          <div class="player-info">
+            <%= player.club %>
+          </div>
+          <div class="player-info">
+
+          </div>
+        </div>
+
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div class="new-season-btn">
+  <%= link_to season_team_players_path(@season, @team) do %>
+    <button type="button" class="btn btn-primary">Liste des Joueurs</button>
+  <% end %>
+</div>
+
+

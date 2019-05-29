@@ -1,12 +1,18 @@
-<div class="return_button">
+<div class="return-button">
   <%= link_to seasons_path do %>
      <button type="button" class="btn btn-primary">Retour</button>
   <% end %>
 </div>
 
+<% if @season.user == current_user && @season.status == 'joining' %>
+  <div class="copy-url">
+    <button type="button" class='btn btn-primary btn-url' onclick="copyToClipboard('<%= season_url(@season) %>')">Copie URL</button>
+  </div>
+<% end %>
+
 <div class="pages-wrapper">
   <div class="page-title">
-    <h1><%= @season.name %></h1>
+    <h1><%= @season.name %></h1><h3>...(<%= @season.status %>)</h3>
   </div>
 
   <div class="slates-wrapper">
@@ -34,7 +40,7 @@
     <div class="ranking">
       <% @teams.sort.each do |team| %>
         <div class="rank">
-          <%= team.name %> <%= team.status %>
+          <%= team.name %> <%= team.status %> - <%= team.user.username %>
         </div>
       <% end %>
     </div>

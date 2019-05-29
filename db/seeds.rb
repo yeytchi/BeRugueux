@@ -11,6 +11,7 @@ Season.destroy_all
 Team.destroy_all
 Day.destroy_all
 Game.destroy_all
+Player.destroy_all
 
 puts 'Starting seed'
 puts 'Seeding Users'
@@ -18,25 +19,34 @@ admin = User.create!(username: 'Admin', email: 'admin@be-rugueux', password: 'ad
 
 nico = User.create!(username: 'La Beaude', email: 'nico@beaud.com', password: 'nicopassword')
 chatte = User.create!(username: 'Chaton', email: 'benoit@calin.com', password: 'chattepassword')
-lagrande = User.create!(username: 'Lagrande', email: 'kegin@lagranderie.com', password: 'lagrandepassword')
+lagrande = User.create!(username: 'Lagrande', email: 'kevin@lagranderie.com', password: 'lagrandepassword')
 ens = User.create!(username: 'Ensbiker', email: 'kevin@enselme.com', password: 'enspassword')
+drij = User.create!(username: 'Drij', email: 'adrien@maire.com', password: 'drijpassword')
 
 puts 'Seeding Seasons'
+# Saisons nico
 tournoi_bc = Season.create!(user: nico, name: 'Tournoi Boudins Caillettes', number_of_teams: 4)
 poule_oppo = Season.create!(user: nico, name: 'Poule Oppo', number_of_teams: 4)
 
+# Saisons lagrande
+lagrande_saison = Season.create!(user: lagrande, name: 'Lagrande Saison', number_of_teams: 2)
+
 puts 'Seeding Teams'
+# Tournoi Boudins Caillettes
 olymplique_saucisse = Team.create!(season: tournoi_bc, user: nico, name: 'Olympique Saucisse', main_colour: 'blue', secondary_colour: 'orange')
 rc_belote = Team.create!(season: tournoi_bc, user: chatte, name: 'RC Belote', main_colour: 'black', secondary_colour: 'white')
 ca_tango = Team.create!(season: tournoi_bc, user: lagrande, name: 'CA Tango', main_colour: 'green', secondary_colour: 'white')
 union_nazes = Team.create!(season: tournoi_bc, user: ens, name: 'Union Nazes', main_colour: 'red', secondary_colour: 'black')
+lagrande_equipe = Team.create!(season: lagrande_saison, user: lagrande, name: 'Lagrande Equipe', main_colour: 'green', secondary_colour: 'brown')
 
 puts 'Seeding Days'
+# Tournoi Boudins Caillettes
 tournoi_bc_day_one = Day.create!(season: tournoi_bc)
 tournoi_bc_day_two = Day.create!(season: tournoi_bc)
 tournoi_bc_day_three = Day.create!(season: tournoi_bc)
 
 puts 'Seeding Games'
+# Tournoi Boudins Caillettes
 tournoi_bc_day_one_game_one = Game.create!(day: tournoi_bc_day_one, home_team: rc_belote, away_team: ca_tango)
 tournoi_bc_day_one_game_two = Game.create!(day: tournoi_bc_day_one, home_team: olymplique_saucisse, away_team: union_nazes)
 tournoi_bc_day_two_game_one = Game.create!(day: tournoi_bc_day_two, home_team: olymplique_saucisse, away_team: rc_belote)

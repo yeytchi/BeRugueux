@@ -22,7 +22,7 @@ class TeamsController < ApplicationController
     @team = Team.find(params[:id])
     @season = Season.find(params[:season_id])
 
-    @players = Player.where(user: current_user)
+    @selections = Selection.where(team: @team)
 
     @offers = Offer.where(team: @team)
   end

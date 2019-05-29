@@ -1,4 +1,4 @@
-<div class="return_button">
+<div class="return-button">
   <%= link_to season_path(@season) do %>
      <button type="button" class="btn btn-primary">Retour</button>
   <% end %>
@@ -12,7 +12,7 @@
   <div class="slates-wrapper">
     <div class="players">
       <h2>Tes Prospects</h2>
-      <div class="player-slate">
+        <div class="player-slate">
           <div class="player-info">
             Nom
           </div>
@@ -23,7 +23,7 @@
             Club
           </div>
           <div class="player-offer">
-            Montant de ton offre
+            Montant
           </div>
         </div>
 
@@ -48,23 +48,39 @@
     </div>
     <div class="players">
       <h2>Tes Joueurs</h2>
-      <% @players.each do |player| %>
-
-        <div class="player-slate">
-          <div class="player-info">
-            <%= player.first_name %> <%= player.last_name %>
-          </div>
-          <div class="player-info">
-            <%= player.position %>
-          </div>
-          <div class="player-info">
-            <%= player.club %>
-          </div>
-          <div class="player-info">
-
-          </div>
+      <div class="player-slate">
+        <div class="player-info">
+          Nom
         </div>
+        <div class="player-info">
+          Postes
+        </div>
+        <div class="player-info">
+          Club
+        </div>
+        <div class="player-offer">
+          Activé
+        </div>
+      </div>
+      <% unless @selections.nil? %>
+        <% @selections.each do |selection| %>
 
+          <div class="player-slate">
+            <div class="player-info">
+              <%= selection.player.first_name %> <%= selection.player.last_name %>
+            </div>
+            <div class="player-info">
+              <%= selection.player.position %>
+            </div>
+            <div class="player-info">
+              <%= selection.player.club %>
+            </div>
+            <div class="player-info">
+
+            </div>
+          </div>
+
+        <% end %>
       <% end %>
     </div>
   </div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_24_075423) do
+ActiveRecord::Schema.define(version: 2019_05_28_160620) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,16 +20,6 @@ ActiveRecord::Schema.define(version: 2019_05_24_075423) do
     t.index ["season_id"], name: "index_days_on_season_id"
   end
 
-  create_table "drafts", force: :cascade do |t|
-    t.bigint "team_id"
-    t.bigint "player_id"
-    t.integer "amount"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["player_id"], name: "index_drafts_on_player_id"
-    t.index ["team_id"], name: "index_drafts_on_team_id"
-  end
-
   create_table "games", force: :cascade do |t|
     t.bigint "day_id"
     t.bigint "home_team_id"
@@ -37,6 +27,16 @@ ActiveRecord::Schema.define(version: 2019_05_24_075423) do
     t.index ["away_team_id"], name: "index_games_on_away_team_id"
     t.index ["day_id"], name: "index_games_on_day_id"
     t.index ["home_team_id"], name: "index_games_on_home_team_id"
+  end
+
+  create_table "offers", force: :cascade do |t|
+    t.bigint "team_id"
+    t.bigint "player_id"
+    t.integer "amount"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["player_id"], name: "index_offers_on_player_id"
+    t.index ["team_id"], name: "index_offers_on_team_id"
   end
 
   create_table "players", force: :cascade do |t|
@@ -62,6 +62,18 @@ ActiveRecord::Schema.define(version: 2019_05_24_075423) do
     t.index ["user_id"], name: "index_seasons_on_user_id"
   end
 
+  create_table "selections", force: :cascade do |t|
+    t.bigint "player_id"
+    t.bigint "team_id"
+    t.bigint "offer_id"
+    t.integer "amount"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["offer_id"], name: "index_selections_on_offer_id"
+    t.index ["player_id"], name: "index_selections_on_player_id"
+    t.index ["team_id"], name: "index_selections_on_team_id"
+  end
+
   create_table "statistics", force: :cascade do |t|
     t.bigint "player_id"
     t.bigint "game_id"
@@ -85,6 +97,7 @@ ActiveRecord::Schema.define(version: 2019_05_24_075423) do
     t.string "main_colour"
     t.string "secondary_colour"
     t.integer "status", default: 0
+    t.integer "budget", default: 1000
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["season_id"], name: "index_teams_on_season_id"
@@ -106,10 +119,13 @@ ActiveRecord::Schema.define(version: 2019_05_24_075423) do
   end
 
   add_foreign_key "days", "seasons"
-  add_foreign_key "drafts", "players"
-  add_foreign_key "drafts", "teams"
   add_foreign_key "games", "days"
+  add_foreign_key "offers", "players"
+  add_foreign_key "offers", "teams"
   add_foreign_key "seasons", "users"
+  add_foreign_key "selections", "offers"
+  add_foreign_key "selections", "players"
+  add_foreign_key "selections", "teams"
   add_foreign_key "statistics", "games"
   add_foreign_key "statistics", "players"
   add_foreign_key "teams", "seasons"

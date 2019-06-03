@@ -4,16 +4,33 @@
   </div>
 
   <div class="slates-wrapper">
-      <% @seasons.each do |season| %>
+    <h2>Mes saisons</h2>
+    <% @my_seasons.each do |season| %>
+      <% if season.teams.empty? %>
         <%= link_to season_path(season.id), class: 'single-slate' do %>
           <div class="slate-icon">
             <%= inline_svg 'brennus.svg' %>
           </div>
           <div class="slate-text">
             <h3><%= season.name %></h3>
+            <p><%= season.teams.count %> / <%= season.number_of_teams %></p>
           </div>
         <% end %>
       <% end %>
+    <% end %>
+
+    <h2>Saisons auxquelles je participe</h2>
+    <% @teams.each do |team| %>
+      <%= link_to season_path(team.season.id), class: 'single-slate' do %>
+        <div class="slate-icon">
+          <%= inline_svg 'brennus.svg' %>
+        </div>
+        <div class="slate-text">
+          <h3><%= team.season.name %></h3>
+          <p><%= team.season.teams.count %> / <%= team.season.number_of_teams %></p>
+        </div>
+      <% end %>
+    <% end %>
   </div>
 
 

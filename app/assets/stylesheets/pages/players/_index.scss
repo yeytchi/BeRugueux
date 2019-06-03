@@ -18,15 +18,20 @@
   border: 1px solid lightgrey;
 }
 
-.player-offer {
-  width: 25%;
-
-  // Uniquement pour développement
-  border: 1px solid lightgrey;
-}
-
-.draft-form {
+.offer-form {
   width: 100%;
   height: 500px;
   background-color: lightgrey;
+}
+
+.unavailable {
+  color: lightgrey;
+}
+
+.owned {
+  color: green;
+}
+
+.pending {
+  color: blue;
 }

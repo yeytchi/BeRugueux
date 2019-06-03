@@ -1,4 +1,4 @@
-<div class="return_button">
+<div class="return-button">
   <%= link_to season_path(@season) do %>
      <button type="button" class="btn btn-primary">Retour</button>
   <% end %>
@@ -9,10 +9,14 @@
     <h1>Prépare la compo du <%= @team.name %></h1>
   </div>
 
+  <div class="budget">
+    <%= @team.budget %>
+  </div>
+
   <div class="slates-wrapper">
     <div class="players">
-      <h2>Tes Drafts</h2>
-      <div class="player-slate">
+      <h2>Tes Prospects</h2>
+        <div class="player-slate">
           <div class="player-info">
             Nom
           </div>
@@ -23,24 +27,24 @@
             Club
           </div>
           <div class="player-offer">
-            Montant de ton offre
+            Montant
           </div>
         </div>
 
-      <% @drafts.each do |draft| %>
+      <% @offers.each do |offer| %>
 
         <div class="player-slate">
           <div class="player-info">
-            <%= draft.player.first_name %> <%= draft.player.last_name %>
+            <%= offer.player.first_name %> <%= offer.player.last_name %>
           </div>
           <div class="player-info">
-            <%= draft.player.position %>
+            <%= offer.player.position %>
           </div>
           <div class="player-info">
-            <%= draft.player.club %>
+            <%= offer.player.club %>
           </div>
           <div class="player-offer">
-            <%= draft.amount %>
+            <%= offer.amount %>
           </div>
         </div>
       <% end %>
@@ -48,23 +52,39 @@
     </div>
     <div class="players">
       <h2>Tes Joueurs</h2>
-      <% @players.each do |player| %>
-
-        <div class="player-slate">
-          <div class="player-info">
-            <%= player.first_name %> <%= player.last_name %>
-          </div>
-          <div class="player-info">
-            <%= player.position %>
-          </div>
-          <div class="player-info">
-            <%= player.club %>
-          </div>
-          <div class="player-info">
-
-          </div>
+      <div class="player-slate">
+        <div class="player-info">
+          Nom
         </div>
+        <div class="player-info">
+          Postes
+        </div>
+        <div class="player-info">
+          Club
+        </div>
+        <div class="player-offer">
+          Activé
+        </div>
+      </div>
+      <% unless @selections.nil? %>
+        <% @selections.each do |selection| %>
 
+          <div class="player-slate">
+            <div class="player-info">
+              <%= selection.player.first_name %> <%= selection.player.last_name %>
+            </div>
+            <div class="player-info">
+              <%= selection.player.position %>
+            </div>
+            <div class="player-info">
+              <%= selection.player.club %>
+            </div>
+            <div class="player-info">
+
+            </div>
+          </div>
+
+        <% end %>
       <% end %>
     </div>
   </div>

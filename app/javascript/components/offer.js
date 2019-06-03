@@ -7,6 +7,13 @@ const generateOffer = () => {
       const modal = document.getElementById('modal'.concat(id));
       modal.classList.remove('d-none');
 
+      const allForms = document.querySelectorAll('.offer-form')
+      allForms.forEach ((form) => {
+        if (form !== modal) {
+        form.classList.add('d-none');
+        }
+      });
+
       const create = document.getElementById('create'.concat(id));
       create.addEventListener('click', (e) => {
         modal.classList.add('d-none');

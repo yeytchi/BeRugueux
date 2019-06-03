@@ -97,6 +97,7 @@ ActiveRecord::Schema.define(version: 2019_05_28_160620) do
     t.string "main_colour"
     t.string "secondary_colour"
     t.integer "status", default: 0
+    t.integer "budget", default: 1000
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["season_id"], name: "index_teams_on_season_id"

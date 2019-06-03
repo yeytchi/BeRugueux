@@ -1,6 +1,10 @@
 class Season < ApplicationRecord
   belongs_to :user
+
   has_many :teams, dependent: :destroy
+  has_many :selections, through: :teams
+  has_many :players, through: :selections
+
   has_many :days, dependent: :destroy
   has_many :games, through: :days, dependent: :destroy
 

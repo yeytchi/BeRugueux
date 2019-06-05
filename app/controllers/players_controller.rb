@@ -1,4 +1,5 @@
 class PlayersController < ApplicationController
+  before_action :set_budget_index, only: [:index]
 
   def index
     @players = Player.all
@@ -7,6 +8,20 @@ class PlayersController < ApplicationController
     @team = Team.find(params[:team_id])
 
     @offer = Offer.new(team: @team)
+  end
 
+  private
+  def set_budget_index
+    @team = Team.find(params[:team_id])
+    offers_amount = 0
+    selections_amount = 0
+    @team.offers.each do |offer|
+      offers_amount += offer.amount
+    end
+    @team.selections.each do |selection|
+      selections_amount += selection.amount
+    end
+    @team.budget = 1000 - (offers_amount + selections_amount)
+    @team.save
   end
 end

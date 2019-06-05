@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     resources :teams, only:[:new, :create, :show, :edit, :update] do
       resources :players, only: [:index] do
       end
-      resources :offers, only:[:new, :create, :index] do
+      resources :offers, only: [:new, :create, :index, :edit, :update, :destroy] do
       end
     end
   end

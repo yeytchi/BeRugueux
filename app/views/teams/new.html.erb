@@ -11,22 +11,10 @@
 
   <div class="new-team-form">
     <%= simple_form_for [@season, @team], method: :post do |f| %>
-      <div class="">
-        <h2>Nom de ton équipe</h2>
-        <%= f.input_field :name, placeholder: 'RC Saucisse', label: 'Nom de ton équipe', error: 'Tu dois nommer ton équipe' %>
-      </div>
-      <div class="">
-        <h2>Logo de ton équipe</h2>
-        <%= f.input_field :logo, placeholder: '', label: 'Logo de ton équipe' %>
-      </div>
-      <div class="">
-        <h2>Couleur principale de ton équipe</h2>
-        <%= f.input_field :main_colour, placeholder: '', label: 'Couleur principale de ton équipe' %>
-      </div>
-      <div class="">
-        <h2>Couleur secondaire de ton équipe</h2>
-        <%= f.input_field :secondary_colour, placeholder: '', label: 'Couleur secondaire de ton équipe' %>
-      </div>
+      <%= f.input :name, placeholder: 'RC Saucisse', label: 'Nom de ton équipe', error: 'Tu dois nommer ton équipe' %>
+      <%= f.input :logo, placeholder: '', label: 'Logo de ton équipe' %>
+      <%= f.input :main_colour, placeholder: '', label: 'Couleur principale de ton équipe' %>
+      <%= f.input :secondary_colour, placeholder: '', label: 'Couleur secondaire de ton équipe' %>
       <%= f.button :submit, class: 'btn btn-primary btn-block' %>
     <% end %>
   </div>

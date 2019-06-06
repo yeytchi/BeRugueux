@@ -13,8 +13,7 @@ class OffersController < ApplicationController
     current_player = Player.find(params[:offer][:player_id])
     current_team = Team.find(params[:team_id])
     offer = Offer.where(team: current_team, player: current_player)
-    raise
-    offer.update!(offer_params)
+    offer.update(offer_params)
     # redirect_to season_team_path(current_season, current_team)
     redirect_to season_team_players_path(current_season, current_team)
   end

@@ -8,7 +8,7 @@ class PlayersController < ApplicationController
     @team = Team.find(params[:team_id])
 
     # Player New Offer
-    @offer = Offer.new(team: @team)
+    @new_offer = Offer.new(team: @team)
 
     # Player Edit Offer
 

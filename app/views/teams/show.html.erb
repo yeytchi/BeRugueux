@@ -10,7 +10,7 @@
   </div>
 
   <div class="budget">
-    <%= @team.budget %>
+    Ton Budget : <%= @team.budget %> €
   </div>
 
   <div class="slates-wrapper">
@@ -63,7 +63,7 @@
           Club
         </div>
         <div class="player-offer">
-          Activé
+          Montant
         </div>
       </div>
       <% unless @selections.nil? %>
@@ -80,7 +80,7 @@
               <%= selection.player.club %>
             </div>
             <div class="player-info">
-
+              <%= selection.amount %>
             </div>
           </div>
 
@@ -90,7 +90,7 @@
   </div>
 </div>
 
-<div class="new-season-btn">
+<div class="action-btn">
   <%= link_to season_team_players_path(@season, @team) do %>
     <button type="button" class="btn btn-primary">Liste des Joueurs</button>
   <% end %>

@@ -3,7 +3,7 @@ class CreateOffers < ActiveRecord::Migration[5.2]
     create_table :offers do |t|
       t.references :team, foreign_key: true
       t.references :player, foreign_key: true
-      t.integer :amount
+      t.integer :amount, default: 0
 
       t.timestamps
     end

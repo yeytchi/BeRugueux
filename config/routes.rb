@@ -5,11 +5,9 @@ Rails.application.routes.draw do
 
   resources :seasons, only:[:index, :new, :create, :show, :destroy] do
     resources :teams, only:[:new, :create, :show, :edit, :update] do
-      resources :offers, only: [:edit, :update, :destroy] do
-      end
       resources :players, only: [:index] do
       end
-      resources :offers, only: [:new, :create] do
+      resources :offers, only: [:create, :update, :destroy] do
       end
     end
   end

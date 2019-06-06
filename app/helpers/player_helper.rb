@@ -17,7 +17,6 @@ module PlayerHelper
     end
   end
 
-
   def player_current_season_team(season, player)
     season.selections.where(player: player).first.team
   end

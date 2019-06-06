@@ -7,10 +7,15 @@ class PlayersController < ApplicationController
     @season = Season.find(params[:season_id])
     @team = Team.find(params[:team_id])
 
+    # Player New Offer
     @offer = Offer.new(team: @team)
+
+    # Player Edit Offer
+
   end
 
   private
+
   def set_budget_index
     @team = Team.find(params[:team_id])
     offers_amount = 0

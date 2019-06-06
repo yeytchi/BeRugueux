@@ -17,9 +17,15 @@
 </div>
 
 <div id="modal<%= @player.id %>-offer" class="offer-form d-none">
-  <%= simple_form_for([@season, @team, @offer], method: :patch) do |f| %>
-    <%= f.input :amount, label: 'Montant de ton offre', default: @offer.amount, placeholder: @offer.amount %>
-    <%= @offer.amount %>
+
+  <%= simple_form_for([@season, @team, @player], method: :patch) do |f| %>
+
+    <%# Test avec fields_for %>
+    <%= fields_for :offer, @player.offer do |ff| %>
+      <%= ff.input :amount, label: 'Montant de ta nouvelle offre', default: @player.offer %>
+    <% end %>
+
+    <%#= f.input :amount, label: 'Montant de ton offre', default: @offer.amount, placeholder: @offer.amount %>
     <%= f.association :team, default: params[:team_id], as: :hidden %>
     <%= f.association :player, label: false, selected: @player.id, input_html: { class: 'd-none' } %>
 

@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 2019_05_28_160620) do
   create_table "offers", force: :cascade do |t|
     t.bigint "team_id"
     t.bigint "player_id"
-    t.integer "amount"
+    t.integer "amount", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["player_id"], name: "index_offers_on_player_id"
@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(version: 2019_05_28_160620) do
     t.string "name"
     t.integer "number_of_teams"
     t.integer "status", default: 0
+    t.integer "round", default: 1
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_seasons_on_user_id"
@@ -65,11 +66,9 @@ ActiveRecord::Schema.define(version: 2019_05_28_160620) do
   create_table "selections", force: :cascade do |t|
     t.bigint "player_id"
     t.bigint "team_id"
-    t.bigint "offer_id"
     t.integer "amount"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["offer_id"], name: "index_selections_on_offer_id"
     t.index ["player_id"], name: "index_selections_on_player_id"
     t.index ["team_id"], name: "index_selections_on_team_id"
   end
@@ -97,6 +96,7 @@ ActiveRecord::Schema.define(version: 2019_05_28_160620) do
     t.string "main_colour"
     t.string "secondary_colour"
     t.integer "status", default: 0
+    t.integer "round", default: 1
     t.integer "budget", default: 1000
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -123,7 +123,6 @@ ActiveRecord::Schema.define(version: 2019_05_28_160620) do
   add_foreign_key "offers", "players"
   add_foreign_key "offers", "teams"
   add_foreign_key "seasons", "users"
-  add_foreign_key "selections", "offers"
   add_foreign_key "selections", "players"
   add_foreign_key "selections", "teams"
   add_foreign_key "statistics", "games"

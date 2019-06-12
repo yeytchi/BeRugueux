@@ -20,7 +20,7 @@
     <div class="season-calendar scroll-snap">
       <% @days.each do |day| %>
         <div class="day-calendar">
-          <h3>Day <%= day.id %></h3>
+          <h3>Day <%= @days.index(day) + 1 %></h3>
           <% day.games.each do |game| %>
             <div class="row">
               <div class="col col-left">

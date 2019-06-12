@@ -17,4 +17,5 @@ class Team < ApplicationRecord
   # validates [:main_colour, :secondary_colour], uniqueness: { scope: :season }
 
   enum status: { recruiting: 0, complete: 1 }
+  # enum round: { round_one: 1, round_two: 2, round_three: 3, round_four: 4, round_five: 5 }
 end

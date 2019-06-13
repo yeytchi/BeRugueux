@@ -11,7 +11,9 @@ Season.destroy_all
 Team.destroy_all
 Day.destroy_all
 Game.destroy_all
+Position.destroy_all
 Player.destroy_all
+PlayersPosition.destroy_all
 
 puts 'Starting seed'
 puts 'Seeding Users'
@@ -54,6 +56,19 @@ tournoi_bc_day_two_game_two = Game.create!(day: tournoi_bc_day_two, home_team: u
 tournoi_bc_day_three_game_one = Game.create!(day: tournoi_bc_day_three, home_team: rc_belote, away_team: union_nazes)
 tournoi_bc_day_three_game_two = Game.create!(day: tournoi_bc_day_three, home_team: olympique_saucisse, away_team: ca_tango)
 
+puts 'Seeding Positions'
+pilier_gauche = Position.create!(name: 'Pilier Gauche')
+talonneur = Position.create!(name: 'Talonneur')
+pilier_droit = Position.create!(name: 'Pilier Droit')
+deuxieme_ligne = Position.create!(name: 'Deuxième Ligne')
+troisieme_ligne_aile = Position.create!(name: 'Troisième Ligne Aile')
+troisieme_ligne_centre = Position.create!(name: 'Troisième Ligne Centre')
+demi_de_melee = Position.create!(name: 'Demi de Mélée')
+demi_d_ouverture = Position.create!(name: "Demi d'Ouverture")
+centre = Position.create!(name: 'Trois Quart Centre')
+ailier = Position.create!(name: 'Trois Quart Aile')
+arriere = Position.create!(name: 'Arrière')
+
 puts 'Seeding Players'
 # Avants
 clement_orne = Player.create!(first_name: 'Clément', last_name: 'Orne', club: 'CA Lormont', kicker: false, kicking_accuracy: 0, position: '1 2 3')
@@ -89,6 +104,64 @@ enzo_garnaud = Player.create!(first_name: 'Enzo', last_name: 'Garnaud', club: 'C
 valentin_mathieu = Player.create!(first_name: 'Valentin', last_name: 'Mathieu', club: 'CA Lormont', kicker: false, kicking_accuracy: 0, position: '11 13 14')
 antoine_gardeil = Player.create!(first_name: 'Antoine', last_name: 'Gardeil', club: 'CA Lormont', kicker: false, kicking_accuracy: 0, position: '11 14 15')
 jb_bataille = Player.create!(first_name: 'Jean Baptiste', last_name: 'Bataille', club: 'CA Lormont', kicker: false, kicking_accuracy: 0, position: '12 13 15')
+
+puts 'Seeding Players Positions'
+# Avants
+clement_orne_position_one = PlayersPosition.create!(player: clement_orne, position: pilier_gauche)
+clement_orne_position_two = PlayersPosition.create!(player: clement_orne, position: talonneur)
+clement_orne_position_three = PlayersPosition.create!(player: clement_orne, position: pilier_droit)
+corentin_aminot_position_one = PlayersPosition.create!(player: corentin_aminot, position: pilier_gauche)
+corentin_aminot_position_three = PlayersPosition.create!(player: corentin_aminot, position: pilier_droit)
+rhiad_dhari_position_one = PlayersPosition.create!(player: rhiad_dhari, position: pilier_gauche)
+rhiad_dhari_position_three = PlayersPosition.create!(player: rhiad_dhari, position: pilier_droit)
+jose_novak_position_one = PlayersPosition.create!(player: jose_novak, position: pilier_gauche)
+jose_novak_position_three = PlayersPosition.create!(player: jose_novak, position: pilier_droit)
+matthias_pukrop_position_one = PlayersPosition.create!(player: matthias_pukrop, position: pilier_gauche)
+matthias_pukrop_position_three = PlayersPosition.create!(player: matthias_pukrop, position: pilier_droit)
+bixente_maggie_position_two = PlayersPosition.create!(player: bixente_maggie, position: talonneur)
+christopher_huyge_position_two = PlayersPosition.create!(player: christopher_huyge, position: talonneur)
+clement_astier_position_one = PlayersPosition.create!(player: clement_astier, position: pilier_gauche)
+clement_astier_position_three = PlayersPosition.create!(player: clement_astier, position: pilier_droit)
+clement_astier_position_four = PlayersPosition.create!(player: clement_astier, position: deuxieme_ligne)
+louis_porterie_position = PlayersPosition.create!(player: louis_porterie, position: deuxieme_ligne)
+remy_albinet_position = PlayersPosition.create!(player: remy_albinet, position: deuxieme_ligne)
+jules_castinel_position = PlayersPosition.create!(player: jules_castinel, position: deuxieme_ligne)
+kevin_lafforgue_position_four = PlayersPosition.create!(player: kevin_lafforgue, position: deuxieme_ligne)
+kevin_lafforgue_position_six = PlayersPosition.create!(player: kevin_lafforgue, position: troisieme_ligne_aile)
+kevin_lafforgue_position_eight = PlayersPosition.create!(player: kevin_lafforgue, position: troisieme_ligne_centre)
+lucas_bonnel_position_four = PlayersPosition.create!(player: lucas_bonnel, position: deuxieme_ligne)
+lucas_bonnel_position_eight = PlayersPosition.create!(player: lucas_bonnel, position: troisieme_ligne_centre)
+arnaud_alibert_position = PlayersPosition.create!(player: arnaud_alibert, position: troisieme_ligne_aile)
+jonathan_lhopital_position_four = PlayersPosition.create!(player: jonathan_lhopital, position: deuxieme_ligne)
+jonathan_lhopital_position_eight = PlayersPosition.create!(player: jonathan_lhopital, position: troisieme_ligne_centre)
+florian_bernet_position = PlayersPosition.create!(player: florian_bernet, position: troisieme_ligne_aile)
+nicolas_beaudouin_position_six = PlayersPosition.create!(player: nicolas_beaudouin, position: troisieme_ligne_aile)
+nicolas_beaudouin_position_eight = PlayersPosition.create!(player: nicolas_beaudouin, position: troisieme_ligne_centre)
+
+# Demis
+maxime_brisseau_position = PlayersPosition.create!(player: maxime_brisseau, position: demi_de_melee)
+alexis_edolphi_position = PlayersPosition.create!(player: alexis_edolphi, position: demi_de_melee)
+pierre_dandrea_position_ten = PlayersPosition.create!(player: pierre_dandrea, position: demi_d_ouverture)
+pierre_dandrea_position_twelve = PlayersPosition.create!(player: pierre_dandrea, position: centre)
+pierre_dandrea_position_fifteen = PlayersPosition.create!(player: pierre_dandrea, position: arriere)
+maximilien_pons_position_ten = PlayersPosition.create!(player: maximilien_pons, position: demi_d_ouverture)
+maximilien_pons_position_twelve = PlayersPosition.create!(player: maximilien_pons, position: centre)
+maximilien_pons_position_fifteen = PlayersPosition.create!(player: maximilien_pons, position: arriere)
+sebastien_vedrenne_position_ten = PlayersPosition.create!(player: sebastien_vedrenne, position: demi_d_ouverture)
+sebastien_vedrenne_position_twelve = PlayersPosition.create!(player: sebastien_vedrenne, position: centre)
+
+# Trois Quarts
+anthony_lasserre_position = PlayersPosition.create!(player: anthony_lasserre, position: centre)
+alexis_conangle_position = PlayersPosition.create!(player: alexis_conangle, position: centre)
+florent_bargozza_position = PlayersPosition.create!(player: florent_bargozza, position: centre)
+enzo_garnaud_position = PlayersPosition.create!(player: enzo_garnaud, position: ailier)
+valentin_mathieu_position_twelve = PlayersPosition.create!(player: valentin_mathieu, position: centre)
+valentin_mathieu_position_fourteen = PlayersPosition.create!(player: valentin_mathieu, position: ailier)
+antoine_gardeil_position_fourteen = PlayersPosition.create!(player: antoine_gardeil, position: ailier)
+antoine_gardeil_position_fifteen = PlayersPosition.create!(player: antoine_gardeil, position: arriere)
+jb_bataille_position_twelve = PlayersPosition.create!(player: jb_bataille, position: centre)
+jb_bataille_position_fifteen = PlayersPosition.create!(player: jb_bataille, position: arriere)
+
 
 puts 'Seeding Offers'
 # Offres Olympique Saucisse (La Beaud)

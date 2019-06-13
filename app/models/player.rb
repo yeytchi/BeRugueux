@@ -3,6 +3,8 @@ class Player < ApplicationRecord
   has_many :statistics
   has_many :selections, dependent: :destroy
   has_many :teams, through: :selections
+  has_many :players_positions
+  has_many :positions, through: :players_positions
 
   validates :first_name, :last_name, :club, :kicking_accuracy, :position, presence: true
   validates :first_name, uniqueness: { scope: :last_name }

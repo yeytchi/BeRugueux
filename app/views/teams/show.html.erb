@@ -14,8 +14,47 @@
   </div>
 
   <div class="slates-wrapper">
-    <div class="players">
-      <h2>Tes Prospects</h2>
+
+    <% if @offers.any? %>
+      <div class="players">
+        <h2>Tes Prospects</h2>
+          <div class="player-slate">
+            <div class="player-info">
+              Nom
+            </div>
+            <div class="player-info">
+              Postes
+            </div>
+            <div class="player-info">
+              Club
+            </div>
+            <div class="player-offer">
+              Montant
+            </div>
+          </div>
+
+        <% @offers.each do |offer| %>
+          <div class="player-slate">
+            <div class="player-info">
+              <%= offer.player.first_name %> <%= offer.player.last_name %>
+            </div>
+            <div class="player-info">
+              <%= offer.player.position %>
+            </div>
+            <div class="player-info">
+              <%= offer.player.club %>
+            </div>
+            <div class="player-offer">
+              <%= offer.amount %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+
+    <% if @selections.any? %>
+      <div class="players">
+        <h2>Tes Joueurs</h2>
         <div class="player-slate">
           <div class="player-info">
             Nom
@@ -31,44 +70,7 @@
           </div>
         </div>
 
-      <% @offers.each do |offer| %>
-
-        <div class="player-slate">
-          <div class="player-info">
-            <%= offer.player.first_name %> <%= offer.player.last_name %>
-          </div>
-          <div class="player-info">
-            <%= offer.player.position %>
-          </div>
-          <div class="player-info">
-            <%= offer.player.club %>
-          </div>
-          <div class="player-offer">
-            <%= offer.amount %>
-          </div>
-        </div>
-      <% end %>
-
-    </div>
-    <div class="players">
-      <h2>Tes Joueurs</h2>
-      <div class="player-slate">
-        <div class="player-info">
-          Nom
-        </div>
-        <div class="player-info">
-          Postes
-        </div>
-        <div class="player-info">
-          Club
-        </div>
-        <div class="player-offer">
-          Montant
-        </div>
-      </div>
-      <% unless @selections.nil? %>
         <% @selections.each do |selection| %>
-
           <div class="player-slate">
             <div class="player-info">
               <%= selection.player.first_name %> <%= selection.player.last_name %>
@@ -83,10 +85,9 @@
               <%= selection.amount %>
             </div>
           </div>
-
         <% end %>
-      <% end %>
-    </div>
+      </div>
+    <% end %>
   </div>
 </div>
 
@@ -95,5 +96,3 @@
     <button type="button" class="btn btn-primary">Liste des Joueurs</button>
   <% end %>
 </div>
-
-

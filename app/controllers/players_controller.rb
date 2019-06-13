@@ -2,7 +2,14 @@ class PlayersController < ApplicationController
   before_action :set_budget_index, only: [:index]
 
   def index
-    @players = Player.all
+    if params[:search]
+      keyword = params[:search].parameterize.upcase
+      @players = Player.where('UPPER(first_name) LIKE ? OR UPPER(last_name) LIKE ? OR UPPER(club) LIKE ?', "%#{keyword}%", "%#{keyword}%", "%#{keyword}%")
+      #  Player.join(:positions).where('name LIKE ?', "%#{params[:search]}%")
+
+    else
+      @players = Player.all
+    end
     @user = current_user
     @season = Season.find(params[:season_id])
     @team = Team.find(params[:team_id])
@@ -11,7 +18,6 @@ class PlayersController < ApplicationController
     @new_offer = Offer.new(team: @team)
 
     # Player Edit Offer
-
   end
 
   private
@@ -28,5 +34,9 @@ class PlayersController < ApplicationController
     end
     @team.budget = 1000 - (offers_amount + selections_amount)
     @team.save
+  end
+
+  def coupon_params
+    params.require(:player).permit(:search, :first_name)
   end
 end

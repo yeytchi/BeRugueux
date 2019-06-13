@@ -1,15 +1,14 @@
-const searchPlayer = (query) => {
-  fetch(`http://www.omdbapi.com/?s=${query}&apikey=adf1f2d7`)
-    .then(response => response.json())
-    .then((data) => {
-      data.Search.forEach((result) => {
-        const movie = `<li class="list-inline-item">
-          <img src="${result.Poster}" alt="">
-          <p>${result.Title}</p>
-        </li>`;
-        results.insertAdjacentHTML("beforeend", movie);
-      });
+const searchPlayer = () => {
+  const input = document.getElementById('keyword');
+  const playerInfo = document.querySelectorAll('player-info');
+  const playerSlates = document.querySelectorAll('.player-slate');
+  input.addEventListener('keyup', (e) => {
+    let keyword = e.currentTarget.value;
+
+    playerSlates.forEach((slate) => {
+      slate.classList.add('d-none');
     });
+  });
 };
 
 export { searchPlayer };

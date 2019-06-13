@@ -8,4 +8,8 @@ class Player < ApplicationRecord
   validates :first_name, uniqueness: { scope: :last_name }
 
   enum status: { rest: 0, playing: 1 }
+
+  def best_offer
+    player.offers.max_by(1) { |offer| offer.amount }.first
+  end
 end

@@ -8,6 +8,7 @@ class CreateTeams < ActiveRecord::Migration[5.2]
       t.string :main_colour
       t.string :secondary_colour
       t.integer :status, default: 0
+      t.integer :round, default: 1
       t.integer :budget, default: 1000
 
       t.timestamps

@@ -11,8 +11,11 @@
   </div>
   <div class="player-info">
 
-    <button type="button" id="<%= @player.id %>-offer" class="offer-btn btn btn-primary">Modifier ton offre</button>
-
+    <% if @team.round == @season.round %>
+      <button type="button" id="<%= @player.id %>-offer" class="offer-btn btn btn-primary">Modifier ton offre</button>
+    <% else %>
+      Offre en attente
+    <% end %>
   </div>
 </div>
 
@@ -25,21 +28,12 @@
   <% end %>
   <%= @current_offer.team.name %>
   <%= simple_form_for([@season, @team, @current_offer], method: :patch) do |f| %>
-
-
-        <%# Test avec fields_for %>
-        <%#= fields_for :offer, @player.offer do |ff| %>
-          <%#= ff.input :amount, label: 'Montant de ta nouvelle offre', default: @player.offer %>
-        <%# end %>
-
-
-    <%= f.input :amount, label: 'Montant de ton offre', default: @current_offer.amount, placeholder: @current_offer.amount %>
+    <%= f.input :amount, label: 'Montant de ton offre', default: @current_offer.amount, placeholder: @current_offer.amount, input_html: { max: @team.budget } %>
     <%= f.association :team, default: params[:team_id], as: :hidden %>
     <%= f.association :player, label: false, selected: @player.id, input_html: { class: 'd-none' } %>
 
     <button type="button" id="create<%= @player.id %>-offer" class="offer-btn btn btn-primary">
-      <%= f.button :submit, "Valider" do %>
-    <% end %>
+      <%= f.button :submit, "Valider" %>
     </button>
   <% end %>
 

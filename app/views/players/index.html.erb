@@ -14,25 +14,30 @@
     Team Round : <%= @team.round %>, Season Round : <%= @season.round %>
   </div>
 
-  <div class="slates-wrapper">
-    <div class="player-slate">
-      <div class="player-info">
-        Name
-      </div>
-      <div class="player-info">
-        Postes
-      </div>
-      <div class="player-info">
-        Club
-      </div>
-      <div class="player-offer">
-        <% if @team.round == @season.round %>
-          Disponibilité
-        <% else %>
-          En attente des autres joueurs
-        <% end %>
-      </div>
+  <form id="search-players" class="form-inline">
+    <input id="keyword" type="text" class="form-control ml-auto mr-2" placeholder="Cherche un Joueur">
+    <input type="submit" class="btn btn-primary mr-auto ml-2" value="Search">
+  </form>
+
+  <div class="player-slate">
+    <div class="player-info">
+      Name
     </div>
+    <div class="player-info">
+      Postes
+    </div>
+    <div class="player-info">
+      Club
+    </div>
+    <div class="player-offer">
+      <% if @team.round == @season.round %>
+        Disponibilité
+      <% else %>
+        En attente des autres joueurs
+      <% end %>
+    </div>
+  </div>
+  <div class="slates-wrapper">
     <% @players.each do |player| %>
       <% @player = player %>
       <%= render player_availability(@player, @team) %>

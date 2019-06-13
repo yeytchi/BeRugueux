@@ -4,7 +4,11 @@ class OffersController < ApplicationController
     current_season = Season.find(params[:season_id])
     current_team = Team.find(params[:team_id])
     offer = Offer.new(offer_params)
-    offer.save!
+    if offer.amount <= current_team.budget
+      offer.save!
+    else
+      redirect_to season_team_players_path(current_season, current_team)
+    end
     redirect_to season_team_players_path(current_season, current_team)
   end
 

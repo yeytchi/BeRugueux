@@ -13,8 +13,6 @@
 
     <% if @team.round == @season.round %>
       <button type="button" id="<%= @player.id %>-offer" class="offer-btn btn btn-primary">Faire une offre</button>
-    <% else %>
-      Vous devez attendre que les autres équipes valident le Round <%= @season.round %>
     <% end %>
 
   </div>

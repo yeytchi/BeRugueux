@@ -26,7 +26,11 @@
         Club
       </div>
       <div class="player-offer">
-        Disponibilité
+        <% if @team.round == @season.round %>
+          Disponibilité
+        <% else %>
+          En attente des autres joueurs
+        <% end %>
       </div>
     </div>
     <% @players.each do |player| %>

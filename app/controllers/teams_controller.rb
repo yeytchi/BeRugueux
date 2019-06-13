@@ -32,7 +32,7 @@ class TeamsController < ApplicationController
 
     @team.round = @season.round + 1
     @team.save
-    new_season_round(@season)
+    new_season_round(@season) if @season.teams.select { |team| team.round == @season.round }.empty?
     redirect_to season_team_path(@season, @team)
   end
 
@@ -62,40 +62,31 @@ class TeamsController < ApplicationController
   end
 
   def new_season_round(season)
-    season_players = season.players
+    season_players = season.players.uniq
     season_offers = season.offers
-    if season.teams.select { |team| team.round == season.round }.empty?
 
-      season_players.each do |player|
-        create_selection(player, season_offers)
-      end
-
-      destroy_remaining_offers(season.teams)
-
-      season.round += 1
-      season.save
+    season_players.each do |player|
+      create_selection(player, season_offers)
     end
+
+    destroy_season_offers(season.teams)
+
+    season.round += 1
+    season.save
   end
 
   def create_selection(player, season_offers)
     player_offers = season_offers.select { |offer| offer.player == player }
     best_offer = player_offers.max_by { |offer| offer.amount }
-
     Selection.create!(team: best_offer.team, player: player, amount: best_offer.amount)
-    end
   end
 
-  def destroy_remaining_offers(teams)
+  def destroy_season_offers(teams)
     teams.each do |team|
-      team.offers.each do |offer|
-        offer.destroy
-      end
+      Offer.where(team: team).destroy_all
     end
   end
 end
-
-
-
 
 
 

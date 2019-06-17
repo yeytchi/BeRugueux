@@ -1,8 +1,10 @@
 import "bootstrap";
 
 import { generateOffer } from '../components/offer.js';
+import { searchPlayer } from '../components/search.js'
 
 generateOffer();
+searchPlayer();
 
 // Copy Season Url
 window.copyToClipboard = function(str) {

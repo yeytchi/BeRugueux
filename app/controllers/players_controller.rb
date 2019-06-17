@@ -4,7 +4,7 @@ class PlayersController < ApplicationController
   def index
     if params[:search]
       keyword = params[:search].parameterize.upcase
-      @players = Player.where('UPPER(first_name) LIKE ? OR UPPER(last_name) LIKE ? OR UPPER(club) LIKE ?', "%#{keyword}%", "%#{keyword}%", "%#{keyword}%")
+      @players = Player.where('UPPER(first_name) LIKE ? OR UPPER(last_name) LIKE ? OR UPPER(club) LIKE ? OR position LIKE ?', "%#{keyword}%", "%#{keyword}%", "%#{keyword}%", "%#{keyword}%")
       #  Player.join(:positions).where('name LIKE ?', "%#{params[:search]}%")
 
     else

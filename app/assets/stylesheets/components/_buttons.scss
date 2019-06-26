@@ -7,11 +7,38 @@
   }
 }
 
-.action-btn img {
+.action-btn {
+  position: absolute;
+  bottom: 30px;
+  right: 30px;
+  background-color: $main;
+  width: 150px;
+  height: 50px;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  h3 {
+    font-size: 18px;
+    font-weight: 400;
+    margin: 0;
+  }
   &:hover {
     cursor: pointer;
     transform: scale(1.05);
     transition: all .2s ease-in-out;
-    box-shadow: -1px 1px 5px rgba(150, 150, 150, 0.8);
+    box-shadow: -1px 1px 5px rgba(0, 0, 0, 0.8);
+  }
+}
+
+.return-button {
+  position: absolute;
+  top: 65px;
+  left: 20px;
+  &:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+    transition: all .2s ease-in-out;
+    box-shadow: -1px 1px 5px rgba(0, 0, 0, 0.8);
   }
 }

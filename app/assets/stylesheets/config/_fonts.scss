@@ -1,13 +1,10 @@
 // Import Google fonts
-@import url("https://fonts.googleapis.com/css?family=Cabin:700|Lato:300,400,400i,700");
+@import url("https://fonts.googleapis.com/css?family=Cabin:400,500,700|Lato:300,400,400i,700");
 
 // Define fonts for body and headers
 $body-font: "Cabin", "Helvetica", "sans-serif";
 $headers-font: "Lato", "Helvetica", "sans-serif";
 
-p {
-  font-size: 14px;
-}
 
 // To use a font file (.woff) uncomment following lines
 // @font-face {

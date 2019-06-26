@@ -4,13 +4,9 @@
   </div>
 
   <div class="slates-wrapper">
-    <% if @my_seasons.empty? && teams.empty? %>
+    <% if @my_seasons.empty? && @teams.empty? %>
       <h3>Crée une saison ou rejoins celle de tes amis.</h3>
     <% else %>
-
-      <div class="seasons-title-slate">
-        <h2>Mes saisons</h2>
-      </div>
 
       <% @my_seasons.each do |season| %>
         <% if season.teams.empty? %>
@@ -20,15 +16,13 @@
             </div>
             <div class="slate-text">
               <h3><%= season.name %></h3>
-              <p><%= season.teams.count %> / <%= season.number_of_teams %></p>
+              <br>
+              <p>(<%= season.teams.count %> / <%= season.number_of_teams %>)</p>
             </div>
           <% end %>
         <% end %>
       <% end %>
 
-      <div class="seasons-title-slate">
-        <h2>Saisons en cours</h2>
-      </div>
       <% @teams.each do |team| %>
         <%= link_to season_path(team.season.id), class: 'single-slate' do %>
           <div class="slate-icon">
@@ -36,7 +30,8 @@
           </div>
           <div class="slate-text">
             <h3><%= team.season.name %></h3>
-            <p><%= team.season.teams.count %> / <%= team.season.number_of_teams %></p>
+            <br>
+            <p>...(<%= team.season.teams.count %> / <%= team.season.number_of_teams %>)</p>
           </div>
         <% end %>
       <% end %>
@@ -46,9 +41,9 @@
 
 </div>
 
-<div class="action-btn">
-  Nouvelle Saison
-  <%= link_to new_season_path do %>
-    <%= image_tag 'next.svg' %>
-  <% end %>
-</div>
+<%= link_to new_season_path do %>
+  <div class="action-btn">
+    <h3>Nouvelle Saison</h3>
+      <!--     <%= image_tag 'next.svg' %> -->
+  </div>
+<% end %>

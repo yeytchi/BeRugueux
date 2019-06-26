@@ -9,12 +9,6 @@
   //  background-color: white;
 }
 
-.action-btn {
-  position: absolute;
-  bottom: 30px;
-  right: 30px;
-}
-
 .slates-wrapper {
   position: absolute;
   top: 180px;
@@ -34,35 +28,21 @@
     width: 600px;
     max-width: 95%;
     height: 100px;
-    margin: 5px 0;
-  }
-}
-
-.seasons-title-slate {
-  width: 60%;
-  margin: 0 20% 0 20%;
-  padding: 5px;
-  height: 40px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  //  background-color: #DAE9B8;
-  h2 {
-    margin: 0;
+    margin: -1px 0;
   }
 }
 
 .single-slate {
   width: 100%;
   display: flex;
-  // border: 2px solid $opposite;
+  border: 2px solid white;
   background-color: #54BF3C;
 
   &:hover {
     cursor: pointer;
     transform: scale(1.02);
     transition: all .2s ease-in-out;
-    box-shadow: -1px 1px 5px rgba(150, 150, 150, 0.8);
+    box-shadow: -1px 1px 5px rgba(0, 0, 0, 0.8);
   }
 }
 

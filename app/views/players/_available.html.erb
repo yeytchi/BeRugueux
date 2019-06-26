@@ -10,11 +10,9 @@
     <%= @player.club %>
   </div>
   <div class="player-info">
-
     <% if @team.round == @season.round %>
-      <button type="button" id="<%= @player.id %>-offer" class="offer-btn btn btn-primary">Faire une offre</button>
+      <div id="<%= @player.id %>-offer" class="offer-btn"><%= image_tag 'bill.svg' %></div>
     <% end %>
-
   </div>
 </div>
 

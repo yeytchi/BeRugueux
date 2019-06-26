@@ -1,23 +1,23 @@
 <div class="return-button">
   <%= link_to season_team_path(@season, @team) do %>
-     <button type="button" class="btn btn-primary">Retour</button>
+    <%= image_tag 'return.svg' %>
   <% end %>
 </div>
 
   <div class="budget">
-    Ton Budget : <%= @team.budget %> €
+    <%= @team.budget %>
   </div>
 
 <div class="pages-wrapper">
   <div class="page-title">
     <h1>Liste des Joueurs</h1>
-    Team Round : <%= @team.round %>, Season Round : <%= @season.round %>
+    <!-- Team Round : <%= @team.round %>, Season Round : <%= @season.round %> -->
   </div>
 
-  <%= form_tag(season_team_players_path(@season, @team), method: :get) do %>
+  <%= form_tag(season_team_players_path(@season, @team), method: :get, class: 'search-player-form') do %>
     <%= text_field_tag :search, params[:search], placeholder: 'Recherche Un Joueur' %>
     <%= submit_tag 'Feu !', name: nil %>
-    <%= link_to 'Annuler la recherche', season_team_players_path(@season, @team) %>
+    <%= link_to 'Annuler', season_team_players_path(@season, @team) %>
   <% end %>
 
   <div class="player-slate">

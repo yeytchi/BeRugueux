@@ -1,35 +1,23 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <%= link_to seasons_path, class: "navbar-brand" do %>
-    <%= image_tag "https://images-na.ssl-images-amazon.com/images/I/518gp-oDSqL._SY355_.jpg", class: "avatar" %>
+<div class="navbar-rugueux navbar-expand-sm navbar-light">
+  <div class="logo">
+    <%= link_to seasons_path do %>
+      <%= image_tag "ballon_vintage.svg", class: "logo" %>
     <% end %>
-
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <% if user_signed_in? %>
-        <li class="nav-item active">
-          <%= link_to "#{current_user.username}", seasons_path, class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "Messages", "#", class: "nav-link" %>
-        </li>
-        <li class="nav-item dropdown">
-          <%= image_tag "https://www.lepoint.fr/images/2014/12/24/3003927-jpg_2630051_1000x667.jpg", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-            <%= link_to "Action", "#", class: "dropdown-item" %>
-            <%= link_to "Another action", "#", class: "dropdown-item" %>
-            <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
-          </div>
-        </li>
-      <% else %>
-        <li class="nav-item">
-          <%= link_to "Login", new_user_session_path, class: "nav-link" %>
-        </li>
-      <% end %>
-    </ul>
   </div>
+
+  <% if user_signed_in? %>
+    <h2><%= current_user.username %></h2>
+  <% else %>
+    <%#= link_to "Login", new_user_session_path, class: "nav-link" %>
+  <% end %>
+
+  <div class="nav-item dropdown">
+    <%= image_tag "https://www.lepoint.fr/images/2014/12/24/3003927-jpg_2630051_1000x667.jpg", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+      <%= link_to "Action", "#", class: "dropdown-item" %>
+      <%= link_to "Another action", "#", class: "dropdown-item" %>
+      <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+    </div>
+  </div>
+
 </div>

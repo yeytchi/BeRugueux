@@ -1,6 +1,6 @@
 <div class="return-button">
   <%= link_to season_path(@season) do %>
-     <button type="button" class="btn btn-primary">Retour</button>
+    <%= image_tag 'return.svg' %>
   <% end %>
 </div>
 
@@ -10,7 +10,7 @@
   </div>
 
   <div class="budget">
-    Ton Budget : <%= @team.budget %> €
+    <%= @team.budget %>
   </div>
 
   <div class="slates-wrapper">
@@ -88,6 +88,15 @@
         <% end %>
       </div>
     <% end %>
+
+    <% if @offers.empty? && @selections.empty? %>
+      <h3>
+        Prépare ta compo en sélectionnant des joueurs dans la Liste des Joueurs.
+        <br>
+        Tu as un budget initial de 1000 €, surveille ton budget en haut à droite de ton écran.
+      </h3>
+    <% end %>
+
   </div>
 </div>
 

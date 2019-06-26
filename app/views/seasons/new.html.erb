@@ -1,6 +1,6 @@
 <div class="return-button">
   <%= link_to seasons_path do %>
-     <button type="button" class="btn btn-primary">Retour</button>
+    <%= image_tag 'return.svg' %>
   <% end %>
 </div>
 
@@ -11,9 +11,10 @@
 
   <div class="new-season-form">
     <%= simple_form_for @season, method: :post do |f| %>
-        <%= f.input :name, placeholder: 'Championnat Gigot Haricots', label: 'Nom de la Saison', error: 'Tu dois nommer ta saison' %>
-        <%= f.input :number_of_teams, collection: [2, 4, 6], label: "Nombre d'équipes participantes", error: 'Tu dois définir le nombre de participats' %>
-      <%= f.button :submit, class: 'btn btn-primary btn-block' %>
+      <%= f.input :name, placeholder: 'Championnat Gigot Haricots', label: 'Nom de la Saison', error: 'Tu dois nommer ta saison' %>
+      <%= f.input :number_of_teams, collection: [2, 4, 6], label: "Nombre d'équipes participantes", error: 'Tu dois définir le nombre de participats' %>
+      <%= f.button :submit %>
+      <%= image_tag 'next.svg' %>
     <% end %>
   </div>
 

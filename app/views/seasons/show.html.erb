@@ -1,10 +1,10 @@
 <div class="return-button">
   <%= link_to seasons_path do %>
-     <button type="button" class="btn btn-primary">Retour</button>
+    <%= image_tag 'return.svg' %>
   <% end %>
 </div>
 
-<% if @season.user == current_user && @season.status == 'joining' %>
+<% if @season.user == current_user && @season.status == 'joining' && @season.teams.any? %>
   <div class="copy-url">
     <button type="button" class='btn btn-primary btn-url' onclick="copyToClipboard('<%= season_url(@season) %>')">Copie URL</button>
   </div>
@@ -12,7 +12,10 @@
 
 <div class="pages-wrapper">
   <div class="page-title">
-    <h1><%= @season.name %></h1><h3>...(<%= @season.status %>)</h3>
+    <h1><%= @season.name %></h1>
+    <% if @season.status == 'joining' %>
+      <p>(<%= @season.teams.count %>/<%= @season.number_of_teams %>)</p>
+    <% end %>
   </div>
 
   <div class="slates-wrapper">
@@ -20,7 +23,9 @@
     <div class="season-calendar scroll-snap">
       <% @days.each do |day| %>
         <div class="day-calendar">
-          <h3>Day <%= @days.index(day) + 1 %></h3>
+          <div class="single-day">
+            <h3>Day <%= @days.index(day) + 1 %></h3>
+          </div>
           <% day.games.each do |game| %>
             <div class="row">
               <div class="col col-left">
@@ -51,12 +56,16 @@
 
 <div class="action-btn">
   <% if @my_team.nil? %>
+    Créer mon équipe
     <%= link_to new_season_team_path(@season) do %>
-      <button type="button" class="btn btn-primary">Créer mon équipe</button>
+      <%= image_tag 'next.svg' %>
+<!--       <button type="button" class="btn btn-primary">Créer mon équipe</button> -->
     <% end %>
   <% else %>
+    Préparer ma compo
     <%= link_to season_team_path(@season, @my_team.id) do %>
-       <button type="button" class="btn btn-primary">Préparer ma compo</button>
+      <%= image_tag 'next.svg' %>
+<!--        <button type="button" class="btn btn-primary">Préparer ma compo</button> -->
     <% end %>
   <% end %>
 </div>

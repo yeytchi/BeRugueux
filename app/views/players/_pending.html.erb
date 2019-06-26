@@ -12,7 +12,7 @@
   <div class="player-info">
 
     <% if @team.round == @season.round %>
-      <button type="button" id="<%= @player.id %>-offer" class="offer-btn btn btn-primary">Modifier ton offre</button>
+      <div id="<%= @player.id %>-offer" class="offer-btn"><%= image_tag 'pending_bill.svg' %></div>
     <% else %>
       Offre en attente
     <% end %>
@@ -36,7 +36,6 @@
       <%= f.button :submit, "Valider" %>
     </button>
   <% end %>
-
 
   <%= link_to '#', id: "cancel#{@player.id}-offer" do %>
     Retour

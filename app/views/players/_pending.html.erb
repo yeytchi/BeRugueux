@@ -1,15 +1,15 @@
 <div class="player-slate pending">
-  <div class="player-info">
+  <div class="player-info name">
     <%= @player.first_name %> <%= @player.last_name %>
     <%#= player_availability(@player, @team) %>
   </div>
-  <div class="player-info">
+  <div class="player-info position">
     <%= @player.position %>
   </div>
-  <div class="player-info">
+  <div class="player-info club">
     <%= @player.club %>
   </div>
-  <div class="player-info">
+  <div class="player-info offer">
 
     <% if @team.round == @season.round %>
       <div id="<%= @player.id %>-offer" class="offer-btn"><%= image_tag 'pending_bill.svg' %></div>

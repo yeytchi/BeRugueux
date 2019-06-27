@@ -21,16 +21,16 @@
   <% end %>
 
   <div class="player-slate">
-    <div class="player-info">
-      Name
+    <div class="player-info name">
+      Nom
     </div>
-    <div class="player-info">
+    <div class="player-info position">
       Postes
     </div>
-    <div class="player-info">
+    <div class="player-info club">
       Club
     </div>
-    <div class="player-offer">
+    <div class="player-info offer">
       <% if @team.round == @season.round %>
         Disponibilité
       <% else %>
@@ -38,7 +38,7 @@
       <% end %>
     </div>
   </div>
-  <div class="slates-wrapper">
+  <div class="slates-wrapper players-index-slates-wrapper">
     <% @players.each do |player| %>
       <% @player = player %>
       <%= render player_availability(@player, @team) %>

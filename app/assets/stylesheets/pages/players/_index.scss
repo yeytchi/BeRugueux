@@ -1,3 +1,9 @@
+.players-index-slates-wrapper {
+  position: absolute;
+  top: 180px;
+  bottom: 70px;
+}
+
 .search-player-form {
   margin: 5px 0;
 }
@@ -10,16 +16,29 @@
 
   display: flex;
   flex-wrap: wrap;
-
-  // Uniquement pour développement
-  border: 1px solid lightblue;
+  border-radius: 15px;
 }
 
 .player-info {
-  width: 25%;
+  display: flex;
+  align-items: center;
+}
 
-  // Uniquement pour développement
-  border: 1px solid lightgrey;
+.name {
+  width: 40%;
+  padding-left: 5px;
+}
+
+.position {
+  width: 20%;
+}
+
+.club {
+  width: 20%;
+}
+
+.offer {
+  width: 20%;
 }
 
 .offer-form {
@@ -33,11 +52,11 @@
 }
 
 .owned {
-  color: green;
+  border: 2px solid $opposite;
 }
 
 .pending {
-  color: blue;
+  border: 2px solid #588578;
 }
 
 .offer-btn {

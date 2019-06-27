@@ -3,7 +3,7 @@
     <h1>Saisons en cours</h1>
   </div>
 
-  <div class="slates-wrapper">
+  <div class="slates-wrapper seasons-index-slates-wrapper">
     <% if @my_seasons.empty? && @teams.empty? %>
       <h3>Crée une saison ou rejoins celle de tes amis.</h3>
     <% else %>
@@ -16,7 +16,6 @@
             </div>
             <div class="slate-text">
               <h3><%= season.name %></h3>
-              <br>
               <p>(<%= season.teams.count %> / <%= season.number_of_teams %>)</p>
             </div>
           <% end %>
@@ -30,8 +29,7 @@
           </div>
           <div class="slate-text">
             <h3><%= team.season.name %></h3>
-            <br>
-            <p>...(<%= team.season.teams.count %> / <%= team.season.number_of_teams %>)</p>
+            <p>(<%= team.season.teams.count %> / <%= team.season.number_of_teams %>)</p>
           </div>
         <% end %>
       <% end %>

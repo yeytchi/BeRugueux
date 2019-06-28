@@ -46,15 +46,13 @@
   </div>
 </div>
 
+
 <% if @season.round == @team.round %>
-  <div class="action-btn">
-
-    <%= simple_form_for([@season, @team], method: :patch) do |f| %>
-
-      <button type="button" class="btn btn-primary">
-        <%= f.button :submit, "Valider ce Round" %>
-      </button>
-    <% end %>
-
-  </div>
+  <%= simple_form_for([@season, @team], method: :patch) do |f| %>
+    <div class="action-btn submit">
+      <h3>Valider ce Round</h3>
+      <%= f.button :submit, value: '' %>
+    </div>
+  <% end %>
 <% end %>
+

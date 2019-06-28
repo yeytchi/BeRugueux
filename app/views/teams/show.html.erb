@@ -19,32 +19,32 @@
       <div class="players">
         <h2>Tes Prospects</h2>
           <div class="player-slate header">
-            <div class="player-info">
+            <div class="player-info name">
               Nom
             </div>
-            <div class="player-info">
+            <div class="player-info position">
               Postes
             </div>
-            <div class="player-info">
+            <div class="player-info club">
               Club
             </div>
-            <div class="player-offer">
+            <div class="player-info offer">
               Montant
             </div>
           </div>
 
         <% @offers.each do |offer| %>
           <div class="player-slate pending">
-            <div class="player-info">
+            <div class="player-info name">
               <%= offer.player.first_name %> <%= offer.player.last_name %>
             </div>
-            <div class="player-info">
+            <div class="player-info position">
               <%= offer.player.position %>
             </div>
-            <div class="player-info">
+            <div class="player-info club">
               <%= offer.player.club %>
             </div>
-            <div class="player-offer">
+            <div class="player-info offer">
               <%= offer.amount %>
             </div>
           </div>
@@ -56,32 +56,32 @@
       <div class="players">
         <h2>Tes Joueurs</h2>
         <div class="player-slate">
-          <div class="player-info">
+          <div class="player-info name">
             Nom
           </div>
-          <div class="player-info">
+          <div class="player-info position">
             Postes
           </div>
-          <div class="player-info">
+          <div class="player-info club">
             Club
           </div>
-          <div class="player-offer">
+          <div class="player-info offer">
             Montant
           </div>
         </div>
 
         <% @selections.each do |selection| %>
           <div class="player-slate owned">
-            <div class="player-info">
+            <div class="player-info name">
               <%= selection.player.first_name %> <%= selection.player.last_name %>
             </div>
-            <div class="player-info">
+            <div class="player-info position">
               <%= selection.player.position %>
             </div>
-            <div class="player-info">
+            <div class="player-info club">
               <%= selection.player.club %>
             </div>
-            <div class="player-info">
+            <div class="player-info offer">
               <%= selection.amount %>
             </div>
           </div>

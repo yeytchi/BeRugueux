@@ -49,6 +49,12 @@
 
 .unavailable {
   color: lightgrey;
+  border: 2px solid lightgrey;
+}
+
+.available {
+  background-color: $opposite;
+  color: $oppositwo;
 }
 
 .owned {
@@ -56,7 +62,8 @@
 }
 
 .pending {
-  border: 2px solid #588578;
+  background-color: $pending;
+  // border: 2px solid #5BC0EB; #588578;
 }
 
 .offer-btn {

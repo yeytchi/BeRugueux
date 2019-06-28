@@ -43,11 +43,7 @@
     </div>
 
     <div class="ranking">
-      <% @teams.sort.each do |team| %>
-        <div class="rank">
-          <%= team.name %> <%= team.status %> - <%= team.user.username %>
-        </div>
-      <% end %>
+      <%= render 'ranking' %>
     </div>
 
 

@@ -1,3 +1,9 @@
+.teams-show-slates-wrapper {
+  position: absolute;
+  top: 120px;
+  bottom: 70px;
+}
+
 .players {
   width: 100%;
 
@@ -6,7 +12,15 @@
 }
 
 .budget {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: absolute;
   top: 65px;
-  right: 30px;
+  right: 20px;
+  font-size: 12px;
+  width: 40px;
+  height: 40px;
+  border: 2px solid $opposite;
+  border-radius: 50%;
 }

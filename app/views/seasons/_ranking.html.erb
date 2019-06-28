@@ -1,0 +1,11 @@
+
+<% @teams.sort.each do |team| %>
+  <div class="team-rank">
+    <div class="team-rank-name">
+      <%= team.name %> <%= team.status %> - <%= team.user.username %>
+    </div>
+    <div class="team-rank-points">
+
+    </div>
+  </div>
+<% end %>

@@ -7,16 +7,9 @@ class SeasonsController < ApplicationController
     if current_user.admin?
       @seasons = Season.all
     else
-      # Seasons current_user has created
-      @my_seasons = Season.where(user: current_user)
-
-      # Seasons where current user has a team
-      # @teams = Season.includes(:teams).where('team.user = ?', current_user)
-      @teams = Team.where(user: current_user)
-
+      @my_seasons = Season.where(user: current_user) # Seasons current_user has created
+      @teams = Team.where(user: current_user) # Seasons where current user has a team
       # first_request.merge(last_request)
-
-
     end
   end
 

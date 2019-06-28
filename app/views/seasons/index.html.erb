@@ -3,41 +3,45 @@
     <h1>Saisons en cours</h1>
   </div>
 
-  <div class="slates-wrapper">
-    <h2>Mes saisons</h2>
-    <% @my_seasons.each do |season| %>
-      <% if season.teams.empty? %>
-        <%= link_to season_path(season.id), class: 'single-slate' do %>
+  <div class="slates-wrapper seasons-index-slates-wrapper">
+    <% if @my_seasons.empty? && @teams.empty? %>
+      <h3>Crée une saison ou rejoins celle de tes amis.</h3>
+    <% else %>
+
+      <% @my_seasons.each do |season| %>
+        <% if season.teams.empty? %>
+          <%= link_to season_path(season.id), class: 'single-slate' do %>
+            <div class="slate-icon">
+              <%= inline_svg 'brennus.svg' %>
+            </div>
+            <div class="slate-text">
+              <h3><%= season.name %></h3>
+              <p>(<%= season.teams.count %> / <%= season.number_of_teams %>)</p>
+            </div>
+          <% end %>
+        <% end %>
+      <% end %>
+
+      <% @teams.each do |team| %>
+        <%= link_to season_path(team.season.id), class: 'single-slate' do %>
           <div class="slate-icon">
             <%= inline_svg 'brennus.svg' %>
           </div>
           <div class="slate-text">
-            <h3><%= season.name %></h3>
-            <p><%= season.teams.count %> / <%= season.number_of_teams %></p>
+            <h3><%= team.season.name %></h3>
+            <p>(<%= team.season.teams.count %> / <%= team.season.number_of_teams %>)</p>
           </div>
         <% end %>
       <% end %>
-    <% end %>
-
-    <h2>Saisons auxquelles je participe</h2>
-    <% @teams.each do |team| %>
-      <%= link_to season_path(team.season.id), class: 'single-slate' do %>
-        <div class="slate-icon">
-          <%= inline_svg 'brennus.svg' %>
-        </div>
-        <div class="slate-text">
-          <h3><%= team.season.name %></h3>
-          <p><%= team.season.teams.count %> / <%= team.season.number_of_teams %></p>
-        </div>
-      <% end %>
-    <% end %>
+    <% end %> <%# Balise if %>
   </div>
 
 
 </div>
 
-<div class="action-btn">
-  <%= link_to new_season_path do %>
-     <button type="button" class="btn btn-primary">Nouvelle Saison</button>
-  <% end %>
-</div>
+<%= link_to new_season_path do %>
+  <div class="action-btn">
+    <h3>Nouvelle Saison</h3>
+      <!--     <%= image_tag 'next.svg' %> -->
+  </div>
+<% end %>

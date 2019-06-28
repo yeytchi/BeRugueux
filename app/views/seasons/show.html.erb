@@ -1,10 +1,10 @@
 <div class="return-button">
   <%= link_to seasons_path do %>
-     <button type="button" class="btn btn-primary">Retour</button>
+    <%= image_tag 'return.svg' %>
   <% end %>
 </div>
 
-<% if @season.user == current_user && @season.status == 'joining' %>
+<% if @season.user == current_user && @season.status == 'joining' && @season.teams.any? %>
   <div class="copy-url">
     <button type="button" class='btn btn-primary btn-url' onclick="copyToClipboard('<%= season_url(@season) %>')">Copie URL</button>
   </div>
@@ -12,15 +12,20 @@
 
 <div class="pages-wrapper">
   <div class="page-title">
-    <h1><%= @season.name %></h1><h3>...(<%= @season.status %>)</h3>
+    <h1><%= @season.name %></h1>
+    <% if @season.status == 'joining' %>
+      <p>(<%= @season.teams.count %>/<%= @season.number_of_teams %>)</p>
+    <% end %>
   </div>
 
-  <div class="slates-wrapper">
+  <div class="slates-wrapper seasons-show-slates-wrapper">
 
     <div class="season-calendar scroll-snap">
       <% @days.each do |day| %>
         <div class="day-calendar">
-          <h3>Day <%= @days.index(day) + 1 %></h3>
+          <div class="single-day">
+            <h3>Day <%= @days.index(day) + 1 %></h3>
+          </div>
           <% day.games.each do |game| %>
             <div class="row">
               <div class="col col-left">
@@ -38,26 +43,33 @@
     </div>
 
     <div class="ranking">
-      <% @teams.sort.each do |team| %>
-        <div class="rank">
-          <%= team.name %> <%= team.status %> - <%= team.user.username %>
-        </div>
-      <% end %>
+      <%= render 'ranking' %>
     </div>
 
 
   </div>
 </div>
 
-<div class="action-btn">
-  <% if @my_team.nil? %>
-    <%= link_to new_season_team_path(@season) do %>
-      <button type="button" class="btn btn-primary">Créer mon équipe</button>
-    <% end %>
-  <% else %>
-    <%= link_to season_team_path(@season, @my_team.id) do %>
-       <button type="button" class="btn btn-primary">Préparer ma compo</button>
-    <% end %>
-  <% end %>
-</div>
+<%= link_to new_season_path do %>
+  <div class="action-btn">
+    <h3>Nouvelle Saison</h3>
+<!--     <%= image_tag 'next.svg' %> -->
+  </div>
+<% end %>
 
+
+<% if @my_team.nil? %>
+  <%= link_to new_season_team_path(@season) do %>
+    <div class="action-btn">
+      <h3>Créer mon équipe</h3>
+<!--       <%= image_tag 'next.svg' %> -->
+    </div>
+  <% end %>
+<% else %>
+  <%= link_to season_team_path(@season, @my_team.id) do %>
+    <div class="action-btn">
+      <h3>Préparer ma compo</h3>
+<!--       <%= image_tag 'next.svg' %> -->
+    </div>
+  <% end %>
+<% end %>

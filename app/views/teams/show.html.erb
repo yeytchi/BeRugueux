@@ -1,50 +1,50 @@
 <div class="return-button">
   <%= link_to season_path(@season) do %>
-     <button type="button" class="btn btn-primary">Retour</button>
+    <%= image_tag 'return.svg' %>
   <% end %>
 </div>
 
 <div class="pages-wrapper">
   <div class="page-title">
-    <h1>Prépare la compo du <%= @team.name %></h1><p> (<%= @team.round %>)</p>
+    <h1><%= @team.name %></h1><p> (<%= @team.round %>)</p>
   </div>
 
   <div class="budget">
-    Ton Budget : <%= @team.budget %> €
+    <%= @team.budget %>
   </div>
 
-  <div class="slates-wrapper">
+  <div class="slates-wrapper teams-show-slates-wrapper">
 
     <% if @offers.any? %>
       <div class="players">
         <h2>Tes Prospects</h2>
-          <div class="player-slate">
-            <div class="player-info">
+          <div class="player-slate header">
+            <div class="player-info name">
               Nom
             </div>
-            <div class="player-info">
+            <div class="player-info position">
               Postes
             </div>
-            <div class="player-info">
+            <div class="player-info club">
               Club
             </div>
-            <div class="player-offer">
+            <div class="player-info offer">
               Montant
             </div>
           </div>
 
         <% @offers.each do |offer| %>
-          <div class="player-slate">
-            <div class="player-info">
+          <div class="player-slate pending">
+            <div class="player-info name">
               <%= offer.player.first_name %> <%= offer.player.last_name %>
             </div>
-            <div class="player-info">
+            <div class="player-info position">
               <%= offer.player.position %>
             </div>
-            <div class="player-info">
+            <div class="player-info club">
               <%= offer.player.club %>
             </div>
-            <div class="player-offer">
+            <div class="player-info offer">
               <%= offer.amount %>
             </div>
           </div>
@@ -56,43 +56,59 @@
       <div class="players">
         <h2>Tes Joueurs</h2>
         <div class="player-slate">
-          <div class="player-info">
+          <div class="player-info name">
             Nom
           </div>
-          <div class="player-info">
+          <div class="player-info position">
             Postes
           </div>
-          <div class="player-info">
+          <div class="player-info club">
             Club
           </div>
-          <div class="player-offer">
+          <div class="player-info offer">
             Montant
           </div>
         </div>
 
         <% @selections.each do |selection| %>
-          <div class="player-slate">
-            <div class="player-info">
+          <div class="player-slate owned">
+            <div class="player-info name">
               <%= selection.player.first_name %> <%= selection.player.last_name %>
             </div>
-            <div class="player-info">
+            <div class="player-info position">
               <%= selection.player.position %>
             </div>
-            <div class="player-info">
+            <div class="player-info club">
               <%= selection.player.club %>
             </div>
-            <div class="player-info">
+            <div class="player-info offer">
               <%= selection.amount %>
             </div>
           </div>
         <% end %>
       </div>
     <% end %>
+
+    <% if @offers.empty? && @selections.empty? %>
+      <h3>
+        Prépare ta compo en sélectionnant des joueurs dans la Liste des Joueurs.
+        <br>
+        Tu as un budget initial de 1000 €, surveille ton budget en haut à droite de ton écran.
+      </h3>
+    <% end %>
+
   </div>
 </div>
 
-<div class="action-btn">
-  <%= link_to season_team_players_path(@season, @team) do %>
-    <button type="button" class="btn btn-primary">Liste des Joueurs</button>
-  <% end %>
-</div>
+<%= link_to new_season_path do %>
+  <div class="action-btn">
+    <h3>Nouvelle Saison</h3>
+      <!--     <%= image_tag 'next.svg' %> -->
+  </div>
+<% end %>
+
+<%= link_to season_team_players_path(@season, @team) do %>
+  <div class="action-btn">
+    <h3>Liste des Joueurs</h3>
+  </div>
+<% end %>

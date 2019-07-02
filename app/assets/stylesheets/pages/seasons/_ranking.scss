@@ -1,0 +1,18 @@
+.team-rank-header {
+  background-color: $opposite;
+  color: white;
+}
+
+.team-rank {
+  display: flex;
+}
+
+.team-rank-name {
+  width: 30%;
+  border: solid 1px black;
+  display: block;
+}
+
+.team-rank-info {
+  width: 10%;
+}

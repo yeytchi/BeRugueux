@@ -1,11 +1,35 @@
-
+<div class="team-rank team-rank-header">
+  <div class="team-rank-name">
+    Equipe
+  </div>
+  <div class="team-rank-info">
+    <%#= team.points %>Pts
+  </div>
+  <div class="team-rank-info">J</div>
+  <div class="team-rank-info">G</div>
+  <div class="team-rank-info">P</div>
+  <div class="team-rank-info">GA</div>
+  <div class="team-rank-info">BO</div>
+  <div class="team-rank-info">BD</div>
+</div>
 <% @teams.sort.each do |team| %>
   <div class="team-rank">
     <div class="team-rank-name">
-      <%= team.name %> <%= team.status %> - <%= team.user.username %>
+      <div>
+        <%= team.name %>
+      </div>
+<!--       <div>
+        <%= team.status %> - <%= team.user.username %>
+      </div> -->
     </div>
-    <div class="team-rank-points">
-
+    <div class="team-rank-info">
+      <%#= team.points %>Pts
     </div>
+    <div class="team-rank-info">J</div>
+    <div class="team-rank-info">G</div>
+    <div class="team-rank-info">P</div>
+    <div class="team-rank-info">GA</div>
+    <div class="team-rank-info">BO</div>
+    <div class="team-rank-info">BD</div>
   </div>
 <% end %>

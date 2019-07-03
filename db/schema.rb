@@ -24,6 +24,9 @@ ActiveRecord::Schema.define(version: 2019_06_13_093524) do
     t.bigint "day_id"
     t.bigint "home_team_id"
     t.bigint "away_team_id"
+    t.boolean "played", default: false
+    t.integer "home_team_score"
+    t.integer "away_team_score"
     t.index ["away_team_id"], name: "index_games_on_away_team_id"
     t.index ["day_id"], name: "index_games_on_day_id"
     t.index ["home_team_id"], name: "index_games_on_home_team_id"
